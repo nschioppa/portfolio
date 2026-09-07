@@ -143,12 +143,14 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
 
       <div className="shell flex h-16 items-center justify-between gap-4 md:h-20">
         {/* Iniciales, no copy: no dependen del idioma. */}
-        <a
-          href="#"
-          className="font-mono text-small font-medium tracking-[0.14em] text-ink transition-colors duration-200 ease-out-soft hover:text-accent motion-reduce:transition-none"
+        {/* El area pulsable llega a 24x24 (WCAG 2.5.8) con padding; los
+            margenes negativos lo compensan para que no mueva la barra. */}
+        <Link
+          href={`/${lang}`}
+          className="-mx-2 -my-2 inline-flex items-center px-2 py-2 font-mono text-small font-medium tracking-[0.14em] text-ink transition-colors duration-200 ease-out-soft hover:text-accent motion-reduce:transition-none"
         >
           NS
-        </a>
+        </Link>
 
         <nav className="flex items-center gap-2 md:gap-6">
           <div
@@ -187,7 +189,7 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
           <div
             role="group"
             aria-label={content.languageLabel}
-            className="flex items-center gap-2 font-mono text-micro uppercase"
+            className="flex items-center gap-1 font-mono text-micro uppercase"
           >
             {LANGS.map((code, index) => (
               <Fragment key={code}>
@@ -197,7 +199,11 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
                 ) : null}
 
                 {code === lang ? (
-                  <span lang={code} aria-current="true" className="text-accent">
+                  <span
+                    lang={code}
+                    aria-current="true"
+                    className="inline-flex min-h-6 min-w-6 items-center justify-center text-accent"
+                  >
                     {code}
                   </span>
                 ) : (
@@ -209,7 +215,7 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
                     // idioma; el codigo de dos letras se queda como visual.
                     aria-label={LANG_LABELS[code]}
                     onClick={handleLangClick}
-                    className="text-faint transition-colors duration-200 ease-out-soft hover:text-ink focus-visible:text-ink motion-reduce:transition-none"
+                    className="inline-flex min-h-6 min-w-6 items-center justify-center rounded-pill text-faint transition-colors duration-200 ease-out-soft hover:text-ink focus-visible:text-ink motion-reduce:transition-none"
                   >
                     {code}
                   </Link>

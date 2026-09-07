@@ -152,7 +152,12 @@ function ContactLink({ link }: ContactLinkProps) {
 
   // La opacidad, y no un color distinto, para bajar de nivel el enlace: asi no
   // pelea con el `text-ink` y el `hover:text-accent` que ya trae ExternalLink.
-  const tone = secondary ? "text-small opacity-80" : "text-body font-medium";
+  // El min-h-6 es el minimo de area pulsable de WCAG 2.5.8 (24x24). Esta fila
+  // es una lista de enlaces suelta, no texto corrido, asi que no esta exenta.
+  const tone = cn(
+    "min-h-6 items-center",
+    secondary ? "text-small opacity-80" : "text-body font-medium",
+  );
 
   if (link.external) {
     return (
@@ -166,7 +171,7 @@ function ContactLink({ link }: ContactLinkProps) {
     <a
       href={link.href}
       className={cn(
-        "link-underline text-ink transition-colors duration-200 ease-out-soft",
+        "link-underline inline-flex text-ink transition-colors duration-200 ease-out-soft",
         "hover:text-accent focus-visible:text-accent motion-reduce:transition-none",
         tone,
       )}

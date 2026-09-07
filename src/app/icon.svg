@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="NS">
+  <!-- Fondo: el mismo casi-negro azulado del sitio, en hex porque un favicon
+       lo pintan navegadores viejos que no entienden oklch. -->
+  <rect width="32" height="32" rx="7" fill="#0a0e14"/>
+  <!-- Una curva de nivel de carta nautica cruzando por detras, muy tenue.
+       Es el mismo guiño que el fondo de la pagina, reducido a 32 px. -->
+  <path d="M-2 24C6 24 8 13 16 13s10 11 18 11" fill="none" stroke="#5cc8f2" stroke-opacity=".28" stroke-width="1.5"/>
+  <text x="16" y="21" text-anchor="middle" fill="#5cc8f2"
+        font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+        font-size="13" font-weight="600" letter-spacing="-.5">NS</text>
+</svg>

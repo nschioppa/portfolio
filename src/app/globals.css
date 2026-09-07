@@ -119,10 +119,12 @@
   --spacing-gutter: clamp(1.25rem, 4vw, 2.5rem);
 
   /* ---- Anchos ------------------------------------------------------------
-     `measure` limita la linea de lectura a ~68 caracteres, que es donde el ojo
-     deja de perder el renglon al saltar de linea. */
-  --container-page: 72rem; /* 1152px de caja util */
-  --container-measure: 68ch;
+     `measure` limita la linea de lectura. OJO con la unidad: `ch` mide el
+     ancho del cero, que en Geist es 0.66em, mientras que la letra media ronda
+     los 0.5em. Medido en la pagina ya montada, 68ch daban entre 79 y 94
+     caracteres por linea, muy por encima del rango comodo de 45-75. A 56ch la
+     medicion baja a 65-77. El numero sale de medir, no de la unidad. */
+  --container-measure: 56ch;
   --container-narrow: 46ch;
 
   /* ---- Radios ------------------------------------------------------------ */

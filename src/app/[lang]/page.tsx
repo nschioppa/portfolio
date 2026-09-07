@@ -1,5 +1,5 @@
-import { getContent } from "@/content";
-import type { Lang } from "@/content/types";
+import { getContent, isLang } from "@/content";
+import { DEFAULT_LANG } from "@/content/types";
 import { Nav } from "@/components/sections/Nav";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -12,9 +12,10 @@ import { Footer } from "@/components/sections/Footer";
 export default async function Page({
   params,
 }: {
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
 }) {
-  const { lang } = await params;
+  const segment = (await params).lang;
+  const lang = isLang(segment) ? segment : DEFAULT_LANG;
   const content = getContent(lang);
 
   return (

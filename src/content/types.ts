@@ -1,7 +1,7 @@
 /**
  * Contrato de contenido del portfolio.
  *
- * Todo el texto visible del sitio vive en `es.ts` e `in.ts` y sale de aqui.
+ * Todo el texto visible del sitio vive en `es.ts` y `en.ts` y sale de aqui.
  * Los componentes no llevan texto escrito a mano: si algo se ve en pantalla,
  * esta en este tipo. Asi se edita el copy sin abrir un solo componente, y si
  * falta una clave en un idioma el build no pasa.
@@ -46,6 +46,8 @@ export interface HeroContent {
   ctaSecondary: Link;
   ctaTertiary?: Link;
   scrollHint: string;
+  /** Cosas pendientes. Se pintan visibles y en gris para que no se olviden. */
+  todos?: string[];
 }
 
 export interface Fact {
@@ -58,6 +60,8 @@ export interface AboutContent {
   heading: string;
   paragraphs: string[];
   facts: Fact[];
+  /** Cosas pendientes. Se pintan visibles y en gris para que no se olviden. */
+  todos?: string[];
 }
 
 export interface Project {
@@ -125,6 +129,8 @@ export interface EducationContent {
   heading: string;
   studies: Study[];
   skills: SkillGroup[];
+  /** Cosas pendientes. Se pintan visibles y en gris para que no se olviden. */
+  todos?: string[];
 }
 
 export interface ContactContent {
@@ -138,6 +144,8 @@ export interface ContactContent {
   copiedLabel: string;
   phoneLabel: string;
   links: Link[];
+  /** Cosas pendientes. Se pintan visibles y en gris para que no se olviden. */
+  todos?: string[];
 }
 
 export interface FooterContent {

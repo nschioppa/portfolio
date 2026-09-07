@@ -117,7 +117,7 @@ export function Hero({ content }: { content: HeroContent }) {
         <Reveal delay={360} className="mt-14 md:mt-20">
           <a
             href={`#${SECTION_IDS.about}`}
-            className="mono-label inline-flex items-center gap-2 hover:text-accent focus-visible:text-accent"
+            className="mono-label inline-flex min-h-6 items-center gap-2 hover:text-accent focus-visible:text-accent"
           >
             {content.scrollHint}
             <svg

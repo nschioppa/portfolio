@@ -33,7 +33,10 @@ export function ExternalLink({
       rel="noopener noreferrer"
       aria-label={ariaLabel}
       className={cn(
-        "group/link inline-flex items-baseline gap-1.5",
+        // min-h-6 son los 24px de area pulsable de WCAG 2.5.8. Estos enlaces
+        // van sueltos en filas y tarjetas, no dentro de una frase, asi que no
+        // les vale la excepcion de enlace en linea.
+        "group/link inline-flex min-h-6 items-baseline gap-1.5",
         "text-ink transition-colors duration-200 ease-out-soft hover:text-accent focus-visible:text-accent",
         "motion-reduce:transition-none",
         className,

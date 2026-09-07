@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import { LANGS, type Lang } from "@/content/types";
-import { getContent } from "@/content";
+import { LANGS, DEFAULT_LANG, type Lang } from "@/content/types";
+import { getContent, isLang } from "@/content";
 import { SITE_URL, AUTHOR } from "@/lib/site";
 
 const geistSans = Geist({
@@ -25,10 +25,18 @@ export function generateStaticParams() {
 /** Cualquier otro segmento es un 404, sin pasar por el render. */
 export const dynamicParams = false;
 
-type Params = { params: Promise<{ lang: Lang }> };
+// Next 16 valida la firma de los layouts contra Promise<{ lang: string }>: el
+// segmento de la URL es una cadena cualquiera hasta que la validamos nosotros.
+type Params = { params: Promise<{ lang: string }> };
+
+/** Estrecha el segmento a un idioma. Con dynamicParams=false no deberia
+ *  llegar nunca otra cosa, pero el tipo no lo sabe. */
+function toLang(value: string): Lang {
+  return isLang(value) ? value : DEFAULT_LANG;
+}
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const { lang } = await params;
+  const lang = toLang((await params).lang);
   const { meta } = getContent(lang);
   const url = `${SITE_URL}/${lang}`;
 
@@ -71,7 +79,7 @@ export default async function LangLayout({
   children,
   params,
 }: Params & { children: React.ReactNode }) {
-  const { lang } = await params;
+  const lang = toLang((await params).lang);
 
   return (
     <html lang={lang} className={`${geistSans.variable} ${geistMono.variable}`}>

@@ -1,9 +1,15 @@
 import { ImageResponse } from "next/og";
-import { getContent } from "@/content";
-import type { Lang } from "@/content/types";
+import { getContent, isLang } from "@/content";
+import { LANGS, DEFAULT_LANG } from "@/content/types";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+/** Sin esto Next deja la imagen como ruta dinamica y la genera en cada
+ *  peticion. Son dos imagenes fijas: se hacen en build y se cachean. */
+export function generateStaticParams() {
+  return LANGS.map((lang) => ({ lang }));
+}
 export const alt = "Nicolás Schioppa — software engineering student and ILCA racing sailor";
 
 /**
@@ -17,10 +23,10 @@ export const alt = "Nicolás Schioppa — software engineering student and ILCA 
 export default async function OpengraphImage({
   params,
 }: {
-  params: Promise<{ lang: Lang }>;
+  params: Promise<{ lang: string }>;
 }) {
-  const { lang } = await params;
-  const { hero, meta } = getContent(lang);
+  const segment = (await params).lang;
+  const { hero, meta } = getContent(isLang(segment) ? segment : DEFAULT_LANG);
 
   return new ImageResponse(
     (

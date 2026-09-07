@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type RefObject } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type RefObject,
+} from "react";
 
 export interface UseRevealOptions {
   /** Fraccion del elemento que tiene que entrar para disparar. */
@@ -15,38 +21,55 @@ export interface UseRevealResult<T extends HTMLElement> {
   visible: boolean;
 }
 
+const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
+
 /**
- * Anima al entrar en viewport, una sola vez.
+ * Se salta la animacion si el sistema pide menos movimiento o si el navegador
+ * no trae IntersectionObserver. Lo segundo importa: sin el, el contenido se
+ * quedaria escondido para siempre esperando un disparo que no llega.
  *
- * - Con `prefers-reduced-motion: reduce` devuelve `visible: true` de entrada y
- *   ni siquiera crea el observer.
- * - Seguro en servidor: no toca `window` fuera del efecto.
+ * Va por `useSyncExternalStore` y no por un `setState` dentro de un efecto
+ * porque eso ultimo encadena renders (y React 19 lo marca como error de lint).
+ * Ademas resuelve el desajuste de hidratacion el solo: en servidor no hay
+ * media query, asi que se sirve el mismo HTML para todos y se corrige al
+ * hidratar.
  */
+function subscribeSkip(onChange: () => void): () => void {
+  const media = window.matchMedia(REDUCED_MOTION);
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
+}
+
+function getSkip(): boolean {
+  return (
+    typeof IntersectionObserver === "undefined" ||
+    window.matchMedia(REDUCED_MOTION).matches
+  );
+}
+
+function getSkipOnServer(): boolean {
+  return false;
+}
+
 export function useReveal<T extends HTMLElement = HTMLElement>(
   options: UseRevealOptions = {},
 ): UseRevealResult<T> {
   const { threshold = 0.15, rootMargin = "0px 0px -12% 0px" } = options;
 
   const ref = useRef<T | null>(null);
-  const [visible, setVisible] = useState(false);
+  const [entered, setEntered] = useState(false);
+  const skip = useSyncExternalStore(subscribeSkip, getSkip, getSkipOnServer);
 
   useEffect(() => {
+    if (skip) return;
     const node = ref.current;
     if (!node) return;
-
-    // Si el sistema pide menos movimiento, o el navegador no trae observer,
-    // se muestra tal cual: nunca se deja contenido escondido por no poder animar.
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced || typeof IntersectionObserver === "undefined") {
-      setVisible(true);
-      return;
-    }
 
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
-          setVisible(true);
+          setEntered(true);
           observer.disconnect(); // ya no hace falta: la animacion es de ida
           return;
         }
@@ -56,7 +79,7 @@ export function useReveal<T extends HTMLElement = HTMLElement>(
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [threshold, rootMargin]);
+  }, [skip, threshold, rootMargin]);
 
-  return { ref, visible };
+  return { ref, visible: skip || entered };
 }

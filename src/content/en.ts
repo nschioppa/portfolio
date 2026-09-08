@@ -54,7 +54,7 @@ export const en: Content = {
     roleLead: "Software engineering student",
     roleAccent: "Backend, data and AI-powered apps",
     bio: [
-      "I'm reading Software Engineering at the University of Málaga, and I'm spending this academic year at Politecnico di Milano. I'm looking for an internship or a first development role in Milan.",
+      "I'm reading Software Engineering at the University of Málaga, and I'm spending this semester at Politecnico di Milano. I'm looking for an internship or a first development role in Milan.",
       "What interests me is the part nobody sees: how the data is modelled, how an architecture holds up as a project grows, and what it takes to carry something from an idea to a thing that actually works.",
       "Away from the keyboard I've raced sailing dinghies since I was a kid. That's where the habit of preparing properly and finishing what I start comes from.",
     ],
@@ -83,6 +83,11 @@ export const en: Content = {
         label: "Languages",
         value: "Spanish (native) · English B2 Cambridge · Italian A1",
       },
+      {
+        label: "Experience",
+        value:
+          "Four consecutive summers at the sailing camp at Real Club El Candado, Málaga",
+      },
       { label: "Looking for", value: "An extracurricular internship or a junior role" },
       { label: "Availability", value: "Immediately, around class hours" },
     ],
@@ -90,9 +95,9 @@ export const en: Content = {
 
   projects: {
     eyebrow: "Projects",
-    heading: "What I'm building",
+    heading: "What I've worked on",
     intro:
-      "Three things I've built: two on my own, and one in forty-eight hours at a hackathon.",
+      "Three things: two on my own, and one in forty-eight hours at a hackathon. Of the first, what exists so far is the design; the other two are written.",
     items: [
       {
         id: "p2p-sail",
@@ -104,9 +109,6 @@ export const en: Content = {
           "I started it with almost no web or database experience, so the project became the course. What exists today is the business model, the domain model and the database schema; the application itself does not. Modelling before coding was a decision, not a delay: the schema already separates product families with their own validated attributes, and that is what later decides what can be searched and filtered.",
         tags: ["Data modelling", "PostgreSQL", "Prisma", "Zod", "TypeScript", "Next.js"],
         links: [],
-        todos: [
-          "[TODO: add a screenshot, even of the part that already works]",
-        ],
       },
       {
         id: "voice-assistant",
@@ -132,11 +134,10 @@ export const en: Content = {
         summary:
           "A model that decides how to split a portfolio across equities and crypto, and when to move into cash instead.",
         contribution:
-          "Built by three of us at the Fintech Chair hackathon at the University of Málaga in March 2026, where we came third. I designed the tactic: when to enter, when to stay out, and having the model's response grow logarithmically rather than linearly. No machine learning — the decision comes from rules you can read and argue with, which over forty-eight hours is an advantage rather than a limitation.",
+          "Built by three of us at the UMA FinTech Chair hackathon in March 2026, where we came third. I designed the tactic: when to enter, when to stay out, and having the model's response grow logarithmically rather than linearly. No machine learning — the decision comes from rules you can read and argue with, which over forty-eight hours is an advantage rather than a limitation.",
         tags: ["Python", "Decision rules", "Fintech", "Teamwork"],
         links: [],
       },
-
     ],
   },
 
@@ -144,33 +145,9 @@ export const en: Content = {
     eyebrow: "Hackathons",
     heading: "Building against the clock",
     intro:
-      "Four weekends building something from nothing, in a team and usually with people I'd met that morning. It's the closest thing to a real sprint I've found outside a job.",
+      "Four competitions against the clock, in a team and usually with people I'd only just met: some of them are about building a product, others about finding an algorithm. It's the closest thing to a real sprint I've found outside a job.",
+    // En orden inverso, de lo mas reciente a lo mas antiguo.
     items: [
-      {
-        id: "catedra-fintech",
-        name: "Fintech Chair hackathon",
-        event: "University of Málaga",
-        period: "March 2026",
-        result: "3rd place",
-        description:
-          "The multi-asset allocation model listed above, under projects.",
-      },
-      {
-        id: "ada-byron",
-        name: "Ada Byron hackathon",
-        event: "UMA and the public universities of Andalusia",
-        period: "April 2026",
-        description:
-          "A region-wide competition. Reasoning problems solved in Java against the clock: no framework helps here — either you find the algorithm or you don't.",
-      },
-      {
-        id: "malacaton",
-        name: "Malacatón",
-        event: "Hackers Week · University of Málaga",
-        period: "2024",
-        description:
-          "A program for checking the state of Spain's reservoirs — how much water each one holds, and which is the nearest.",
-      },
       {
         id: "espet-up",
         name: "Espet-Up",
@@ -178,6 +155,31 @@ export const en: Content = {
         period: "July 2026",
         description:
           "Turning real problems of the city — housing, mobility, tourism, local commerce — into proposals with a business model behind them.",
+      },
+      {
+        id: "ada-byron",
+        name: "Ada Byron contest",
+        event: "UMA and other Andalusian public universities",
+        period: "April 2026",
+        description:
+          "The Andalusian round of the national university programming contest, in teams of three. Algorithm problems solved in Java against the clock: no framework helps here — either you find the algorithm or you don't.",
+      },
+      {
+        id: "catedra-fintech",
+        name: "UMA FinTech Chair hackathon",
+        event: "Hackers Week · University of Málaga",
+        period: "March 2026",
+        result: "3rd place",
+        description:
+          "The multi-asset allocation model listed above, under projects.",
+      },
+      {
+        id: "malackathon",
+        name: "Malackathon",
+        event: "School of Computer Science · University of Málaga",
+        period: "October 2024",
+        description:
+          "A program for checking the state of Spain's reservoirs — how much water each one holds, and which is the nearest.",
       },
     ],
   },

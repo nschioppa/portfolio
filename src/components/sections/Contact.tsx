@@ -22,16 +22,9 @@ import { cn } from "@/lib/cn";
  *  ya no describe nada. */
 const COPIED_MS = 2000;
 
-/** Redes de marca personal. Se decide por DOMINIO y no por el texto visible
- *  del enlace, que cambia con el idioma y no es asunto del componente. */
-const PERSONAL_BRAND_HOSTS = ["instagram.com", "tiktok.com"] as const;
-
-/** Un enlace sin destino todavia. No se pinta como enlace. */
+/** Un enlace sin destino todavia. No se pinta como enlace: prometer un
+ *  destino que no existe es peor que no ponerlo. */
 const NO_HREF = "#";
-
-function isPersonalBrand(href: string): boolean {
-  return PERSONAL_BRAND_HOSTS.some((host) => href.includes(host));
-}
 
 export function Contact({ content }: { content: ContactContent }) {
   return (
@@ -137,14 +130,12 @@ interface ContactLinkProps {
  * abre esta seccion.
  */
 function ContactLink({ link }: ContactLinkProps) {
-  const secondary = isPersonalBrand(link.href);
-
   // Un href "#" no lleva a ninguna parte: se pinta como texto apagado y no
   // como enlace, que seria prometer un destino que no existe. El TODO de la
   // lista de abajo es quien explica por que falta.
   if (link.href === NO_HREF) {
     return (
-      <span className={cn("text-faint", secondary ? "text-small" : "text-body font-medium")}>
+      <span className="text-faint text-body font-medium">
         {link.label}
       </span>
     );
@@ -154,14 +145,13 @@ function ContactLink({ link }: ContactLinkProps) {
   // pelea con el `text-ink` y el `hover:text-accent` que ya trae ExternalLink.
   // El min-h-6 es el minimo de area pulsable de WCAG 2.5.8 (24x24). Esta fila
   // es una lista de enlaces suelta, no texto corrido, asi que no esta exenta.
-  const tone = cn(
-    "min-h-6 items-center",
-    secondary ? "text-small opacity-80" : "text-body font-medium",
-  );
+  // El min-h-6 es el minimo de area pulsable de WCAG 2.5.8 (24x24). Esta fila
+  // es una lista de enlaces suelta, no texto corrido, asi que no esta exenta.
+  const tone = "min-h-6 items-center text-body font-medium";
 
   if (link.external) {
     return (
-      <ExternalLink href={link.href} showIcon={!secondary} className={tone}>
+      <ExternalLink href={link.href} showIcon className={tone}>
         {link.label}
       </ExternalLink>
     );

@@ -66,9 +66,7 @@ export const es: Content = {
       href: "https://github.com/nschioppa",
       external: true,
     },
-    ctaTertiary: { label: "Descargar CV", href: "/cv.pdf", external: true },
     scrollHint: "Más abajo",
-    todos: ["[TODO: subir el CV en PDF a public/cv.pdf]"],
   },
 
   about: {
@@ -76,7 +74,7 @@ export const es: Content = {
     heading: "Cómo trabajo",
     paragraphs: [
       "Nací en Argentina, tengo la ciudadanía italiana y llevo años estudiando en España. Desde septiembre estoy en Milán, de Erasmus en el Politecnico.",
-      "En la carrera trabajo sobre todo con Java y Scala 3. En los proyectos propios, con lo que pida cada uno: TypeScript y PostgreSQL en P2P Sail, Python en el asistente de voz. Lo que se repite no es el lenguaje sino el orden — entender el problema entero, modelar los datos antes que la interfaz, y dejar el proyecto en un estado en el que se pueda seguir dentro de seis meses.",
+      "Java es el lenguaje que mejor manejo: es con el que estudio y con el que compito en hackathons, donde el código se escribe a mano y contra reloj. En los proyectos propios trabajo de otra manera — me apoyo en la IA para escribir, y mi parte es decidir la arquitectura, revisar lo que sale y no dar por bueno nada que no entienda. Las dos formas me parecen necesarias, y no son la misma habilidad.",
       "Empiezo cosas sin saber hacerlas todavía. P2P Sail arrancó sin que yo hubiera tocado una base de datos en serio, y el asistente de voz sin haber escrito nunca un servicio que corriera solo en segundo plano. Aprender sobre la marcha es parte del método, no un accidente.",
     ],
     facts: [
@@ -85,10 +83,10 @@ export const es: Content = {
       { label: "Trabajo en la UE", value: "Ciudadanía italiana" },
       {
         label: "Idiomas",
-        value:
-          "Español nativo · Inglés B2 Cambridge · Italiano [TODO: confirmar nivel]",
+        value: "Español nativo · Inglés B2 Cambridge · Italiano A1",
       },
-      { label: "Busco", value: "Prácticas o primer puesto de desarrollo" },
+      { label: "Busco", value: "Prácticas extracurriculares o primer puesto junior" },
+      { label: "Disponibilidad", value: "Desde ya, compatible con las clases" },
     ],
   },
 
@@ -96,12 +94,12 @@ export const es: Content = {
     eyebrow: "Proyectos",
     heading: "Lo que estoy construyendo",
     intro:
-      "Cuatro cosas en las que trabajé o trabajo. Tres son código; la última es una idea de negocio que llegó hasta donde llegó.",
+      "Tres cosas que he construido: dos por mi cuenta y una en cuarenta y ocho horas, en un hackathon.",
     items: [
       {
         id: "p2p-sail",
         name: "P2P Sail",
-        status: { label: "En desarrollo", tone: "building" },
+        status: { label: "En pausa", tone: "exploring" },
         summary:
           "Marketplace de compraventa de equipamiento náutico de segunda mano: velas, cascos, mástiles, accesorios.",
         contribution:
@@ -118,8 +116,7 @@ export const es: Content = {
         links: [],
         todos: [
           "[TODO: confirmar el stack definitivo]",
-          "[TODO: decidir si el repositorio va a ser público]",
-          "[TODO: agregar captura de la aplicación]",
+          "[TODO: agregar una captura, aunque sea de la parte que ya funciona]",
         ],
       },
       {
@@ -146,32 +143,11 @@ export const es: Content = {
         summary:
           "Un modelo que decide cómo repartir una cartera entre acciones y criptomonedas, y cuándo pasarse a efectivo.",
         contribution:
-          "Lo construimos en equipo durante el hackathon de la Cátedra Fintech de la Universidad de Málaga, donde quedamos terceros. No bastaba con elegir dónde entrar: el modelo también tenía que decidir cuándo salirse a fiat porque no compensaba seguir expuesto.",
-        tags: ["Fintech", "Modelado", "Trabajo en equipo"],
-        links: [],
-        todos: [
-          "[TODO: confirmar el año del hackathon]",
-          "[TODO: con qué lo construimos: lenguaje, librerías y de dónde salían los datos]",
-          "[TODO: qué parte hiciste vos y cuánta gente erais]",
-          "[TODO: enlace al repositorio o a la presentación, si existe]",
-        ],
-      },
-      {
-        id: "luggage-free",
-        name: "Viajar sin equipaje",
-        status: { label: "En validación", tone: "exploring" },
-        summary:
-          "Concepto de servicio, todavía sin lanzar: guardarropa y alquiler de ropa en destino para moverse entre ciudades sin facturar maleta.",
-        contribution:
-          "Es un ejercicio de ideación e investigación de mercado, no un producto. Escribí un informe de viabilidad centrado en Málaga: quién paga, cuánto y qué tiene que ser cierto para que el modelo cierre. Sigue en validación.",
-        tags: [
-          "Investigación de mercado",
-          "Modelo de negocio",
-          "Estudio de viabilidad",
-          "Validación",
-        ],
+          "Lo construimos entre tres en el hackathon de la Cátedra Fintech de la Universidad de Málaga, en marzo de 2026, y quedamos terceros. Yo diseñé la táctica: cuándo entrar, cuándo quedarse fuera, y que la respuesta del modelo creciera de forma logarítmica y no lineal. Sin machine learning — la decisión sale de reglas que se pueden leer y discutir, que en cuarenta y ocho horas es una ventaja y no una limitación.",
+        tags: ["Python", "Reglas de decisión", "Fintech", "Trabajo en equipo"],
         links: [],
       },
+
     ],
   },
 
@@ -185,7 +161,7 @@ export const es: Content = {
         id: "catedra-fintech",
         name: "Hackathon de la Cátedra Fintech",
         event: "Universidad de Málaga",
-        period: "[TODO: año]",
+        period: "Marzo de 2026",
         result: "3.er puesto",
         description:
           "El modelo de asignación multiactivo que aparece más arriba, entre los proyectos.",
@@ -196,14 +172,15 @@ export const es: Content = {
         event: "UMA y universidades públicas de Andalucía",
         period: "[TODO: año]",
         description:
-          "Competición a nivel andaluz, con equipos de varias universidades. [TODO: contar qué construimos]",
+          "Competición a nivel andaluz. Problemas de razonamiento resueltos en Java contra reloj: aquí no hay framework que ayude, o sacas el algoritmo o no lo sacas.",
       },
       {
         id: "malacaton",
         name: "Malacatón",
         event: "Hackers Week · Universidad de Málaga",
         period: "2024",
-        description: "[TODO: contar qué construimos en la Malacatón]",
+        description:
+          "Un programa para consultar el estado de los embalses de España — cuánta agua tiene cada uno y cuál es el más cercano.",
       },
       {
         id: "espet-up",
@@ -238,21 +215,10 @@ export const es: Content = {
     skills: [
       {
         label: "Lenguajes",
-        items: ["Java", "Scala 3", "SQL", "C", "C++", "TypeScript"],
+        items: ["Java", "Scala 3", "Python", "SQL", "C", "C++", "TypeScript"],
       },
-      {
-        label: "Herramientas",
-        items: [
-          "Git",
-          "Linux",
-          "PostgreSQL",
-          "[TODO: ampliar y confirmar la lista de herramientas]",
-        ],
-      },
-      {
-        label: "Certificaciones",
-        items: ["Cambridge English B2"],
-      },
+      { label: "Herramientas", items: ["Git", "Linux", "PostgreSQL"] },
+      { label: "Certificaciones", items: ["Cambridge English B2"] },
     ],
   },
 
@@ -268,12 +234,12 @@ export const es: Content = {
     phoneLabel: "Teléfono",
     links: [
       { label: "GitHub", href: "https://github.com/nschioppa", external: true },
-      // Sin perfil todavia: el href queda en "#" hasta que exista la URL.
-      { label: "LinkedIn", href: "#" },
-      { label: "Instagram", href: "https://instagram.com/nicoschioppa", external: true },
-      { label: "TikTok", href: "https://tiktok.com/@nschioppa", external: true },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/nicolas-schioppa-4808a2297/",
+        external: true,
+      },
     ],
-    todos: ["[TODO: falta la URL del perfil de LinkedIn]"],
   },
 
   footer: {

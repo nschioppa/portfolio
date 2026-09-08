@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Fragment, useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
 
 import { LANG_LABELS, otherLang } from "@/content";
@@ -24,8 +23,29 @@ const DESKTOP_QUERY = "(min-width: 48rem)";
 /** Las secciones en orden de documento, para el resaltado del enlace activo. */
 const SECTION_ORDER = Object.values(SECTION_IDS);
 
+/**
+ * Que seccion cruza la linea de lectura, medido en el momento en que se
+ * pregunta. Devuelve null arriba del todo, donde manda el hero y no hay ancla
+ * que conservar.
+ *
+ * El 45% del alto de la ventana es la misma linea que usa el resaltado del
+ * enlace activo, para que las dos cosas coincidan siempre.
+ */
+function sectionInView(): string | null {
+  const linea = window.innerHeight * 0.45;
+
+  for (const id of SECTION_ORDER) {
+    const node = document.getElementById(id);
+    if (!node) continue;
+
+    const { top, bottom } = node.getBoundingClientRect();
+    if (top <= linea && bottom >= linea) return id;
+  }
+
+  return null;
+}
+
 export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
-  const router = useRouter();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const [open, setOpen] = useState(false);
@@ -70,6 +90,46 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
     return () => query.removeEventListener("change", onChange);
   }, []);
 
+  // Al cargar la pagina con un ancla en la URL el navegador se queda arriba:
+  // intenta saltar antes de que React hidrate y de que lleguen las fuentes, y
+  // para entonces el destino todavia no esta donde va a acabar. Se corrige una
+  // sola vez, ya montado. Vale tanto para el cambio de idioma como para un
+  // enlace compartido del tipo /en#projects.
+  useEffect(() => {
+    const id = window.location.hash.slice(1);
+    if (!id || !document.getElementById(id)) return;
+
+    // Si el lector ya ha tocado la rueda no se le mueve la pagina por debajo.
+    let cancelado = false;
+    const rendirse = () => {
+      cancelado = true;
+    };
+    for (const evento of ["wheel", "touchstart", "keydown"] as const) {
+      window.addEventListener(evento, rendirse, { once: true, passive: true });
+    }
+
+    // `instant` y no el comportamiento por defecto: el `scroll-behavior: smooth`
+    // de la hoja de estilos convierte el salto en una animacion, y durante la
+    // carga esa animacion se cancela sola y deja la pagina arriba.
+    const saltar = () => {
+      if (cancelado) return;
+      document.getElementById(id)?.scrollIntoView({ behavior: "instant", block: "start" });
+    };
+
+    // Dos pasadas. La primera en cuanto hidrata; la segunda a 250 ms, cuando ya
+    // estan las fuentes y las alturas definitivas, porque si el destino se ha
+    // movido la primera se queda corta.
+    saltar();
+    const reintento = setTimeout(saltar, 250);
+
+    return () => {
+      clearTimeout(reintento);
+      for (const evento of ["wheel", "touchstart", "keydown"] as const) {
+        window.removeEventListener(evento, rendirse);
+      }
+    };
+  }, []);
+
   // Seccion visible, para resaltar su enlace.
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
@@ -110,12 +170,28 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       if (event.button !== 0) return;
 
+      // La seccion que se conserva es la que el lector TIENE DELANTE, medida
+      // aqui mismo. Ni el hash de la URL ni `activeId` sirven: el hash se queda
+      // con la ultima ancla pulsada y no vuelve a cambiar, y `activeId` depende
+      // de que el observer haya llegado a disparar. Quien pulsaba "Contacto" y
+      // luego subia arriba acababa en el pie de la otra version.
       event.preventDefault();
-      // El hash se lee en el momento del clic, no al renderizar: asi el cambio
-      // de idioma conserva la seccion en la que esta el lector.
-      router.push(`/${target}${window.location.hash}`);
+
+      const seccion = sectionInView();
+      const destino = seccion ? `/${target}#${seccion}` : `/${target}`;
+
+      // Navegacion del navegador y no `router.push`, a proposito. El router de
+      // Next mantiene su propia idea de la URL: al empujar "/en" sin ancla le
+      // pega el hash que el creia vigente (el de la ultima ancla pulsada) y
+      // ademas conserva el desplazamiento entre rutas que comparten layout. El
+      // resultado era caer en el pie de la otra version. `assign` produce
+      // exactamente la URL que se le da, y ahi se acaba la discusion.
+      //
+      // El coste es una recarga completa, que aqui es lo correcto: cambiar de
+      // idioma reemplaza todo el contenido y el atributo lang del documento.
+      window.location.assign(destino);
     },
-    [router, target],
+    [target],
   );
 
   return (
@@ -207,7 +283,12 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
                     {code}
                   </span>
                 ) : (
-                  <Link
+                  // Un <a> pelado y no un <Link>: el Link intercepta el clic
+                  // por su cuenta y navega con router.push, que arrastra el
+                  // hash que tuviera la URL. Aqui hace falta que, cuando no
+                  // hay seccion que conservar, mande el navegador y la URL
+                  // salga limpia.
+                  <a
                     href={`/${target}`}
                     lang={code}
                     hrefLang={code}
@@ -218,7 +299,7 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
                     className="inline-flex min-h-6 min-w-6 items-center justify-center rounded-pill text-faint transition-colors duration-200 ease-out-soft hover:text-ink focus-visible:text-ink motion-reduce:transition-none"
                   >
                     {code}
-                  </Link>
+                  </a>
                 )}
               </Fragment>
             ))}

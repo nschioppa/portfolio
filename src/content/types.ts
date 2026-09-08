@@ -87,29 +87,6 @@ export interface ProjectsContent {
   items: Project[];
 }
 
-export interface Stat {
-  value: string;
-  label: string;
-}
-
-export interface TimelineEntry {
-  period: string;
-  title: string;
-  description: string;
-}
-
-export interface SailingContent {
-  eyebrow: string;
-  heading: string;
-  intro: string;
-  stats: Stat[];
-  timeline: TimelineEntry[];
-  /** Parrafo corto sobre el contenido en redes. Tono natural, sin vender humo. */
-  socialNote: string;
-  socialLinks: Link[];
-  todos?: string[];
-}
-
 export interface Study {
   institution: string;
   degree: string;
@@ -172,7 +149,6 @@ export interface Content {
   hero: HeroContent;
   about: AboutContent;
   projects: ProjectsContent;
-  sailing: SailingContent;
   education: EducationContent;
   contact: ContactContent;
   footer: FooterContent;
@@ -183,7 +159,6 @@ export interface Content {
 export const SECTION_IDS = {
   about: "about",
   projects: "projects",
-  sailing: "sailing",
   education: "education",
   contact: "contact",
 } as const;

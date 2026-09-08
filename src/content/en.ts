@@ -38,6 +38,7 @@ export const en: Content = {
     items: [
       { label: "About", href: "#about" },
       { label: "Projects", href: "#projects" },
+      { label: "Hackathons", href: "#hackathons" },
       { label: "Education", href: "#education" },
       { label: "Contact", href: "#contact" },
     ],
@@ -93,7 +94,7 @@ export const en: Content = {
     eyebrow: "Projects",
     heading: "What I'm building",
     intro:
-      "Four things I've worked on. Two are code, two are business ideas taken as far as they went.",
+      "Four things I've worked on. Three are code; the last is a business idea taken as far as it went.",
     items: [
       {
         id: "p2p-sail",
@@ -137,15 +138,21 @@ export const en: Content = {
         ],
       },
       {
-        id: "espet-up",
-        name: "Espet-Up Hackathon",
-        status: { label: "Completed", tone: "done" },
+        id: "fintech-model",
+        name: "Multi-asset allocation model",
+        status: { label: "3rd place", tone: "done" },
         summary:
-          "A hackathon in Málaga, July 2026, turning real city problems — housing, mobility, tourism, local retail — into business proposals.",
+          "A model that decides how to split a portfolio across equities and crypto, and when to move into cash instead.",
         contribution:
-          "A team I'd never met, a problem I hadn't picked and a pitch at the end. Half the work was narrowing the problem down before proposing anything.",
-        tags: ["Ideation", "Problem validation", "Pitching", "Teamwork"],
+          "Built as a team at the Fintech Chair hackathon at the University of Málaga, where we came third. Picking what to buy was the easy half: the model also had to decide when to sit in fiat because staying exposed wasn't worth it.",
+        tags: ["Fintech", "Modelling", "Teamwork"],
         links: [],
+        todos: [
+          "[TODO: confirm the year of the hackathon]",
+          "[TODO: what we built it with: language, libraries, where the data came from]",
+          "[TODO: which part you worked on and how big the team was]",
+          "[TODO: a link to the repository or the pitch deck, if one exists]",
+        ],
       },
       {
         id: "luggage-free",
@@ -162,6 +169,47 @@ export const en: Content = {
           "Validation",
         ],
         links: [],
+      },
+    ],
+  },
+
+  hackathons: {
+    eyebrow: "Hackathons",
+    heading: "Building against the clock",
+    intro:
+      "Four weekends building something from nothing, in a team and usually with people I'd met that morning. It's the closest thing to a real sprint I've found outside a job.",
+    items: [
+      {
+        id: "catedra-fintech",
+        name: "Fintech Chair hackathon",
+        event: "University of Málaga",
+        period: "[TODO: year]",
+        result: "3rd place",
+        description:
+          "The multi-asset allocation model listed above, under projects.",
+      },
+      {
+        id: "ada-byron",
+        name: "Ada Byron hackathon",
+        event: "UMA and the public universities of Andalusia",
+        period: "[TODO: year]",
+        description:
+          "A region-wide competition with teams from several universities. [TODO: describe what we built]",
+      },
+      {
+        id: "malacaton",
+        name: "Malacatón",
+        event: "Hackers Week · University of Málaga",
+        period: "2024",
+        description: "[TODO: describe what we built at Malacatón]",
+      },
+      {
+        id: "espet-up",
+        name: "Espet-Up",
+        event: "Málaga",
+        period: "July 2026",
+        description:
+          "Turning real problems of the city — housing, mobility, tourism, local commerce — into proposals with a business model behind them.",
       },
     ],
   },

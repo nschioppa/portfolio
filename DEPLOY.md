@@ -5,38 +5,19 @@ dominio cuando lo tengas.
 
 ---
 
-## 1. Subir a GitHub
+## 1. Subir a GitHub — hecho
 
-`gh` esta instalado (versión 2.100.0) pero **sin autenticar**. El login abre el
-navegador, así que hay que hacerlo a mano una vez:
-
-```bash
-gh auth login
-```
-
-Elegí `GitHub.com` → `HTTPS` → `Login with a web browser`. Cuando termine,
-conectá también git para que los `push` no vuelvan a pedir credenciales:
+El repositorio ya está en
+[github.com/nschioppa/portfolio](https://github.com/nschioppa/portfolio), público y
+con todo el historial de commits. La rama es `main` y `origin` ya apunta ahí, así
+que a partir de ahora basta con:
 
 ```bash
-gh auth setup-git
+git push
 ```
 
-Ya con eso, desde `D:\AI\projects\portfolio`:
-
-```bash
-gh repo create portfolio --public --source=. --remote=origin --push
-```
-
-Eso crea `github.com/nschioppa/portfolio`, lo enlaza como `origin` y sube la
-rama `main` con todo el historial de commits.
-
-Si preferís crearlo desde la web (github.com/new, sin README ni .gitignore, que
-ya los tenemos), los comandos equivalentes son:
-
-```bash
-git remote add origin https://github.com/nschioppa/portfolio.git
-git push -u origin main
-```
+El otro repositorio del portfolio, el del asistente de voz, está en
+[github.com/nschioppa/voice-assistant](https://github.com/nschioppa/voice-assistant).
 
 ---
 

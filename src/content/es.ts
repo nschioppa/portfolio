@@ -40,6 +40,7 @@ export const es: Content = {
     items: [
       { label: "Sobre mí", href: "#about" },
       { label: "Proyectos", href: "#projects" },
+      { label: "Hackathons", href: "#hackathons" },
       { label: "Formación", href: "#education" },
       { label: "Contacto", href: "#contact" },
     ],
@@ -95,7 +96,7 @@ export const es: Content = {
     eyebrow: "Proyectos",
     heading: "Lo que estoy construyendo",
     intro:
-      "Cuatro cosas en las que trabajé o trabajo. Dos son código, dos son ideas de negocio que llegaron hasta donde llegaron.",
+      "Cuatro cosas en las que trabajé o trabajo. Tres son código; la última es una idea de negocio que llegó hasta donde llegó.",
     items: [
       {
         id: "p2p-sail",
@@ -139,15 +140,21 @@ export const es: Content = {
         ],
       },
       {
-        id: "espet-up",
-        name: "Espet-Up Hackathon",
-        status: { label: "Terminado", tone: "done" },
+        id: "fintech-model",
+        name: "Modelo de asignación multiactivo",
+        status: { label: "3.er puesto", tone: "done" },
         summary:
-          "Hackathon en Málaga, julio de 2026, para convertir problemas reales de la ciudad —vivienda, movilidad, turismo, comercio local— en propuestas de negocio.",
+          "Un modelo que decide cómo repartir una cartera entre acciones y criptomonedas, y cuándo pasarse a efectivo.",
         contribution:
-          "Un equipo que no conocía, un problema que no elegí y un pitch al final. La mitad del trabajo fue acotar el problema antes de proponer nada.",
-        tags: ["Ideación", "Validación de problemas", "Pitch", "Trabajo en equipo"],
+          "Lo construimos en equipo durante el hackathon de la Cátedra Fintech de la Universidad de Málaga, donde quedamos terceros. No bastaba con elegir dónde entrar: el modelo también tenía que decidir cuándo salirse a fiat porque no compensaba seguir expuesto.",
+        tags: ["Fintech", "Modelado", "Trabajo en equipo"],
         links: [],
+        todos: [
+          "[TODO: confirmar el año del hackathon]",
+          "[TODO: con qué lo construimos: lenguaje, librerías y de dónde salían los datos]",
+          "[TODO: qué parte hiciste vos y cuánta gente erais]",
+          "[TODO: enlace al repositorio o a la presentación, si existe]",
+        ],
       },
       {
         id: "luggage-free",
@@ -164,6 +171,47 @@ export const es: Content = {
           "Validación",
         ],
         links: [],
+      },
+    ],
+  },
+
+  hackathons: {
+    eyebrow: "Hackathons",
+    heading: "Construir con el reloj en contra",
+    intro:
+      "Cuatro fines de semana montando algo desde cero, en equipo y casi siempre con gente que acababa de conocer. Es lo más parecido a un sprint real que he encontrado fuera de un trabajo.",
+    items: [
+      {
+        id: "catedra-fintech",
+        name: "Hackathon de la Cátedra Fintech",
+        event: "Universidad de Málaga",
+        period: "[TODO: año]",
+        result: "3.er puesto",
+        description:
+          "El modelo de asignación multiactivo que aparece más arriba, entre los proyectos.",
+      },
+      {
+        id: "ada-byron",
+        name: "Hackathon Ada Byron",
+        event: "UMA y universidades públicas de Andalucía",
+        period: "[TODO: año]",
+        description:
+          "Competición a nivel andaluz, con equipos de varias universidades. [TODO: contar qué construimos]",
+      },
+      {
+        id: "malacaton",
+        name: "Malacatón",
+        event: "Hackers Week · Universidad de Málaga",
+        period: "2024",
+        description: "[TODO: contar qué construimos en la Malacatón]",
+      },
+      {
+        id: "espet-up",
+        name: "Espet-Up",
+        event: "Málaga",
+        period: "Julio de 2026",
+        description:
+          "Convertir problemas reales de la ciudad — vivienda, movilidad, turismo, comercio local — en propuestas con un modelo de negocio detrás.",
       },
     ],
   },

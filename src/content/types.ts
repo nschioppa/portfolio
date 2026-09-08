@@ -101,6 +101,27 @@ export interface SkillGroup {
   items: string[];
 }
 
+export interface Hackathon {
+  /** Identificador estable, igual en los dos idiomas. */
+  id: string;
+  name: string;
+  /** Quien lo organiza y donde. */
+  event: string;
+  period: string;
+  /** El puesto, si lo hubo. Se pinta destacado: es lo que mira un recruiter. */
+  result?: string;
+  description: string;
+  todos?: string[];
+}
+
+export interface HackathonsContent {
+  eyebrow: string;
+  heading: string;
+  intro?: string;
+  items: Hackathon[];
+  todos?: string[];
+}
+
 export interface EducationContent {
   eyebrow: string;
   heading: string;
@@ -149,6 +170,7 @@ export interface Content {
   hero: HeroContent;
   about: AboutContent;
   projects: ProjectsContent;
+  hackathons: HackathonsContent;
   education: EducationContent;
   contact: ContactContent;
   footer: FooterContent;
@@ -159,6 +181,7 @@ export interface Content {
 export const SECTION_IDS = {
   about: "about",
   projects: "projects",
+  hackathons: "hackathons",
   education: "education",
   contact: "contact",
 } as const;

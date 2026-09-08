@@ -12,10 +12,10 @@ import type { Content } from "./types";
  */
 export const es: Content = {
   meta: {
-    title: "Nicolás Schioppa — Ingeniería del Software y vela de competición",
+    title: "Nicolás Schioppa — Estudiante de Ingeniería del Software en Milán",
     description:
-      "Estudiante de Ingeniería del Software en la Universidad de Málaga, ahora de Erasmus en el Politecnico di Milano. Busco prácticas de desarrollo en Milán.",
-    ogTagline: "Ingeniería del Software en Málaga y Milán. ILCA 7 el resto del tiempo.",
+      "Ingeniería del Software en la Universidad de Málaga, ahora de Erasmus en el Politecnico di Milano. Backend, datos y aplicaciones con IA. Busco prácticas en Milán.",
+    ogTagline: "Ingeniería del Software en Málaga y Milán. Backend, datos y aplicaciones con IA.",
     keywords: [
       "Nicolás Schioppa",
       "ingeniería del software",
@@ -24,13 +24,15 @@ export const es: Content = {
       "Politecnico di Milano",
       "Universidad de Málaga",
       "Erasmus",
-      "Next.js",
+      "backend",
       "TypeScript",
-      "ILCA 7",
-      "vela",
+      "Java",
+      "Python",
+      "PostgreSQL",
+      "inteligencia artificial",
     ],
     ogImageAlt:
-      "Nicolás Schioppa — estudiante de Ingeniería del Software y regatista de ILCA 7.",
+      "Nicolás Schioppa — estudiante de Ingeniería del Software en Milán.",
   },
 
   nav: {
@@ -38,7 +40,6 @@ export const es: Content = {
     items: [
       { label: "Sobre mí", href: "#about" },
       { label: "Proyectos", href: "#projects" },
-      { label: "Vela", href: "#sailing" },
       { label: "Formación", href: "#education" },
       { label: "Contacto", href: "#contact" },
     ],
@@ -52,11 +53,11 @@ export const es: Content = {
     location: "Milán, Italia — Erasmus",
     name: "Nicolás Schioppa",
     roleLead: "Ingeniero de software en formación",
-    roleAccent: "y regatista de ILCA",
+    roleAccent: "Backend, datos y aplicaciones con IA",
     bio: [
-      "Estudio Ingeniería del Software en la Universidad de Málaga. Este curso lo hago en el Politecnico di Milano, donde llegué en septiembre con una beca Erasmus.",
-      "Navego desde los siete años y compito en ILCA 7. Catorce temporadas de regatas y cuatro veranos entrenando a chicos me dejaron una idea que uso todos los días: una regata se gana en la preparación y se pierde en las decisiones pequeñas.",
-      "Un proyecto se parece bastante a eso. Leer las condiciones, elegir un rumbo, corregir cuando el viento rola y no soltar la caña hasta el deploy.",
+      "Estudio Ingeniería del Software en la Universidad de Málaga y este curso lo hago en el Politecnico di Milano. Busco prácticas o un primer puesto de desarrollo en Milán.",
+      "Me interesa la parte que no se ve: cómo se modelan los datos, cómo aguanta una arquitectura cuando el proyecto crece, y qué hace falta para llevar algo desde la idea hasta que funciona de verdad.",
+      "Fuera del código navego y compito en vela desde chico. De ahí me viene la costumbre de preparar bien y de no soltar hasta el final.",
     ],
     ctaPrimary: { label: "Hablemos", href: "#contact" },
     ctaSecondary: {
@@ -71,22 +72,22 @@ export const es: Content = {
 
   about: {
     eyebrow: "Sobre mí",
-    heading: "Dónde empecé y dónde estoy",
+    heading: "Cómo trabajo",
     paragraphs: [
-      "Nací y crecí en Argentina. Tengo también la ciudadanía italiana, por familia, y hace años que vivo y estudio en España. Desde septiembre estoy en Milán.",
-      "Mudarse de país es empezar de cero con los trámites, con los amigos y con la forma en la que se hace todo. Lo hice tres veces. La tercera se nota en lo rápido que uno deja de esperar que las cosas funcionen como en el sitio anterior.",
-      "Ahora busco prácticas o un primer trabajo de desarrollo en Milán. Me interesan el backend y el diseño de sistemas: entender el problema entero antes de escribir la primera línea.",
+      "Nací en Argentina, tengo la ciudadanía italiana y llevo años estudiando en España. Desde septiembre estoy en Milán, de Erasmus en el Politecnico.",
+      "En la carrera trabajo sobre todo con Java y Scala 3. En los proyectos propios, con lo que pida cada uno: TypeScript y PostgreSQL en P2P Sail, Python en el asistente de voz. Lo que se repite no es el lenguaje sino el orden — entender el problema entero, modelar los datos antes que la interfaz, y dejar el proyecto en un estado en el que se pueda seguir dentro de seis meses.",
+      "Empiezo cosas sin saber hacerlas todavía. P2P Sail arrancó sin que yo hubiera tocado una base de datos en serio, y el asistente de voz sin haber escrito nunca un servicio que corriera solo en segundo plano. Aprender sobre la marcha es parte del método, no un accidente.",
     ],
     facts: [
-      { label: "País de nacimiento", value: "Argentina" },
-      { label: "Ciudadanía", value: "Italiana y argentina" },
+      { label: "Ahora", value: "Milán, Italia — Erasmus hasta feb. 2027" },
       { label: "Base", value: "Málaga, España" },
-      { label: "Ahora", value: "Milán, Italia" },
+      { label: "Trabajo en la UE", value: "Ciudadanía italiana" },
       {
         label: "Idiomas",
         value:
           "Español nativo · Inglés B2 Cambridge · Italiano [TODO: confirmar nivel]",
       },
+      { label: "Busco", value: "Prácticas o primer puesto de desarrollo" },
     ],
   },
 
@@ -167,69 +168,6 @@ export const es: Content = {
     ],
   },
 
-  sailing: {
-    eyebrow: "Vela",
-    heading: "Catorce temporadas en el agua",
-    intro:
-      "Compito en ILCA 7 y entreno a los que empiezan. Catorce años, tres clubes y dos países.",
-    stats: [
-      { value: "14", label: "años navegando" },
-      { value: "ILCA 7", label: "clase actual" },
-      { value: "4", label: "veranos como instructor" },
-      { value: "3", label: "clubes" },
-    ],
-    timeline: [
-      {
-        period: "2012",
-        title: "Primeros bordos en Optimist",
-        description:
-          "Empecé a navegar a los siete años. Optimist, viento flojo y muchas volcadas.",
-      },
-      {
-        period: "2017 — 2021",
-        title: "Optimist Timonel y Laser en el Yacht Club Argentino",
-        description:
-          "Los primeros años de competición seria: entrenamiento semanal y regatas de flota en Optimist Timonel, y después el salto al Laser.",
-      },
-      {
-        period: "2021 — actualidad",
-        title: "ILCA 6 y después ILCA 7, en Málaga",
-        description:
-          "Cambio de país y de flota. Entreno y compito entre el Real Club Mediterráneo y el Real Club El Candado.",
-      },
-      {
-        period: "Veranos de 2023 y 2024",
-        title: "Entrenador y Técnico Deportivo Inicial en Vela",
-        description:
-          "Con el título oficial de Técnico Deportivo Inicial en Vela entrené Optimist e ILCA en el Real Club El Candado, y fui instructor cuatro veranos en el campamento náutico del Real Club Mediterráneo. Explicar lo mismo de cinco maneras distintas hasta que una funciona no se aprende en un libro: lo enseña un chico de diez años.",
-      },
-      {
-        period: "Dos veranos",
-        title: "Foiling en el Lago di Garda",
-        description:
-          "Waszp y Birdyfish en el Stickl Sportcamp, dos temporadas seguidas. Volar cambia las escalas: los errores se pagan más rápido y las decisiones hay que tomarlas antes.",
-      },
-      {
-        period: "Ahora",
-        title: "Rumbo al Trofeo Princesa Sofía",
-        description:
-          "Preparación en ILCA 7 para el Trofeo Princesa Sofía. Es el objetivo de esta temporada.",
-      },
-    ],
-    socialNote:
-      "También cuento lo que pasa en el agua en Instagram y TikTok. Sobre todo para la gente que está empezando: los errores que cometí y lo que me hubiera gustado que alguien me explicara antes.",
-    socialLinks: [
-      { label: "Instagram", href: "https://instagram.com/nicoschioppa", external: true },
-      { label: "TikTok", href: "https://tiktok.com/@nschioppa", external: true },
-    ],
-    todos: [
-      "[TODO: agregar fotos navegando]",
-      "[TODO: confirmar el año del título de Técnico Deportivo Inicial en Vela]",
-      "[TODO: confirmar si fueron 3 o 4 veranos en el campamento del Real Club Mediterráneo]",
-      "[TODO: confirmar los años de los dos veranos de foiling en el Lago di Garda]",
-    ],
-  },
-
   education: {
     eyebrow: "Formación",
     heading: "Estudios y herramientas",
@@ -265,7 +203,7 @@ export const es: Content = {
       },
       {
         label: "Certificaciones",
-        items: ["Cambridge English B2", "Técnico Deportivo Inicial en Vela"],
+        items: ["Cambridge English B2"],
       },
     ],
   },

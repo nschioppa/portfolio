@@ -10,10 +10,10 @@ import type { Content } from "./types";
  */
 export const en: Content = {
   meta: {
-    title: "Nicolás Schioppa — Software Engineering Student & ILCA Sailor",
+    title: "Nicolás Schioppa — Software Engineering Student in Milan",
     description:
-      "Software engineering student at the University of Málaga, now on Erasmus exchange at Politecnico di Milano. Looking for a development internship in Milan.",
-    ogTagline: "Software engineering in Málaga and Milan. ILCA 7 the rest of the time.",
+      "Software engineering at the University of Málaga, now on Erasmus at Politecnico di Milano. Backend, data and AI-powered apps. Looking for an internship in Milan.",
+    ogTagline: "Software engineering in Málaga and Milan. Backend, data and AI-powered apps.",
     keywords: [
       "Nicolás Schioppa",
       "software engineering",
@@ -22,13 +22,15 @@ export const en: Content = {
       "Politecnico di Milano",
       "University of Málaga",
       "Erasmus",
-      "Next.js",
+      "backend",
       "TypeScript",
-      "ILCA 7",
-      "sailing",
+      "Java",
+      "Python",
+      "PostgreSQL",
+      "artificial intelligence",
     ],
     ogImageAlt:
-      "Nicolás Schioppa — software engineering student and ILCA 7 racing sailor.",
+      "Nicolás Schioppa — software engineering student in Milan.",
   },
 
   nav: {
@@ -36,7 +38,6 @@ export const en: Content = {
     items: [
       { label: "About", href: "#about" },
       { label: "Projects", href: "#projects" },
-      { label: "Sailing", href: "#sailing" },
       { label: "Education", href: "#education" },
       { label: "Contact", href: "#contact" },
     ],
@@ -50,11 +51,11 @@ export const en: Content = {
     location: "Milan, Italy — on exchange",
     name: "Nicolás Schioppa",
     roleLead: "Software engineering student",
-    roleAccent: "and ILCA racing sailor",
+    roleAccent: "Backend, data and AI-powered apps",
     bio: [
-      "I'm reading Software Engineering at the University of Málaga. This academic year I'm at Politecnico di Milano, where I arrived in September on an Erasmus exchange.",
-      "I've been sailing since I was seven and I race an ILCA 7. Fourteen seasons of racing and four summers coaching left me with one idea I use every day: a race is won in the preparation and lost in the small decisions.",
-      "A project isn't that different. Read the conditions, commit to a course, adjust when the breeze shifts, and keep a hand on the tiller until it ships.",
+      "I'm reading Software Engineering at the University of Málaga, and I'm spending this academic year at Politecnico di Milano. I'm looking for an internship or a first development role in Milan.",
+      "What interests me is the part nobody sees: how the data is modelled, how an architecture holds up as a project grows, and what it takes to carry something from an idea to a thing that actually works.",
+      "Away from the keyboard I've raced sailing dinghies since I was a kid. That's where the habit of preparing properly and finishing what I start comes from.",
     ],
     ctaPrimary: { label: "Get in touch", href: "#contact" },
     ctaSecondary: {
@@ -69,22 +70,22 @@ export const en: Content = {
 
   about: {
     eyebrow: "About",
-    heading: "Where I started, where I am",
+    heading: "How I work",
     paragraphs: [
-      "I was born and raised in Argentina. I hold Italian citizenship through family, and I've lived and studied in Spain for years now. Since September I've been in Milan.",
-      "Moving country means starting over with the paperwork, the friends and the way everything is done. I've done it three times. By the third you notice how quickly you stop expecting things to work the way they did in the last place.",
-      "Right now I'm looking for an internship or a first development job in Milan. Backend work and systems design interest me most: understanding the whole problem before writing the first line.",
+      "I was born in Argentina, I hold Italian citizenship, and I've studied in Spain for years. Since September I've been in Milan, on exchange at the Politecnico.",
+      "At university I work mostly in Java and Scala 3. On my own projects, in whatever each one calls for: TypeScript and PostgreSQL for P2P Sail, Python for the voice assistant. What repeats isn't the language, it's the order of things — understand the whole problem, model the data before the interface, and leave the project in a state someone can pick up six months later.",
+      "I start things I don't yet know how to do. P2P Sail began before I'd touched a database in earnest, and the voice assistant before I'd ever written a service that runs on its own in the background. Learning as I go is part of the method, not an accident.",
     ],
     facts: [
-      { label: "Born in", value: "Argentina" },
-      { label: "Citizenship", value: "Italian and Argentinian" },
+      { label: "Right now", value: "Milan, Italy — on exchange until Feb 2027" },
       { label: "Based in", value: "Málaga, Spain" },
-      { label: "Right now", value: "Milan, Italy" },
+      { label: "EU work rights", value: "Italian citizenship" },
       {
         label: "Languages",
         value:
           "Spanish (native) · English B2 Cambridge · Italian [TODO: confirm level]",
       },
+      { label: "Looking for", value: "An internship or a first development role" },
     ],
   },
 
@@ -165,69 +166,6 @@ export const en: Content = {
     ],
   },
 
-  sailing: {
-    eyebrow: "Sailing",
-    heading: "Fourteen seasons on the water",
-    intro:
-      "I race an ILCA 7 and coach the sailors who are just starting out. Fourteen years, three clubs and two countries.",
-    stats: [
-      { value: "14", label: "years sailing" },
-      { value: "ILCA 7", label: "current class" },
-      { value: "4", label: "summers coaching" },
-      { value: "3", label: "clubs" },
-    ],
-    timeline: [
-      {
-        period: "2012",
-        title: "First tacks in an Optimist",
-        description:
-          "I started sailing at seven, in an Optimist dinghy. Light breeze and plenty of capsizes.",
-      },
-      {
-        period: "2017 — 2021",
-        title: "Optimist Timonel and Laser at Yacht Club Argentino",
-        description:
-          "The first years of proper racing: weekly training and fleet regattas in the Optimist Timonel class, then the step up to the Laser.",
-      },
-      {
-        period: "2021 — present",
-        title: "ILCA 6, then ILCA 7, in Málaga",
-        description:
-          "New country, new fleet. I train and race between Real Club Mediterráneo and Real Club El Candado.",
-      },
-      {
-        period: "Summers of 2023 and 2024",
-        title: "Coach, with the Spanish instructor qualification",
-        description:
-          "With the official Técnico Deportivo Inicial en Vela qualification I coached Optimist and ILCA at Real Club El Candado, and spent four summers as an instructor at the Real Club Mediterráneo sailing camp. Explaining the same thing five different ways until one of them lands isn't something a book teaches you: a ten-year-old does.",
-      },
-      {
-        period: "Two summers",
-        title: "Foiling on Lake Garda",
-        description:
-          "Waszp and Birdyfish at Stickl Sportcamp, two seasons running. Foiling changes the timescales: mistakes cost you faster and every decision has to come earlier.",
-      },
-      {
-        period: "Now",
-        title: "Building towards Trofeo Princesa Sofía",
-        description:
-          "Training in the ILCA 7 for Trofeo Princesa Sofía. That's the target for this season.",
-      },
-    ],
-    socialNote:
-      "I also post what happens on the water on Instagram and TikTok. Mostly for people who are just starting: the mistakes I made, and the things I wish someone had explained to me sooner.",
-    socialLinks: [
-      { label: "Instagram", href: "https://instagram.com/nicoschioppa", external: true },
-      { label: "TikTok", href: "https://tiktok.com/@nschioppa", external: true },
-    ],
-    todos: [
-      "[TODO: add sailing photos]",
-      "[TODO: confirm the year of the Técnico Deportivo Inicial en Vela qualification]",
-      "[TODO: confirm whether it was 3 or 4 summers at the Real Club Mediterráneo camp]",
-      "[TODO: confirm the years of the two foiling summers on Lake Garda]",
-    ],
-  },
-
   education: {
     eyebrow: "Education",
     heading: "Studies and tools",
@@ -263,10 +201,7 @@ export const en: Content = {
       },
       {
         label: "Certifications",
-        items: [
-          "Cambridge English B2",
-          "Técnico Deportivo Inicial en Vela (Spanish sailing instructor)",
-        ],
+        items: ["Cambridge English B2"],
       },
     ],
   },

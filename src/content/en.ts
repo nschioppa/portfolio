@@ -64,9 +64,7 @@ export const en: Content = {
       href: "https://github.com/nschioppa",
       external: true,
     },
-    ctaTertiary: { label: "Download CV", href: "/cv.pdf", external: true },
     scrollHint: "Scroll",
-    todos: ["[TODO: upload the CV as a PDF to public/cv.pdf]"],
   },
 
   about: {
@@ -74,7 +72,7 @@ export const en: Content = {
     heading: "How I work",
     paragraphs: [
       "I was born in Argentina, I hold Italian citizenship, and I've studied in Spain for years. Since September I've been in Milan, on exchange at the Politecnico.",
-      "At university I work mostly in Java and Scala 3. On my own projects, in whatever each one calls for: TypeScript and PostgreSQL for P2P Sail, Python for the voice assistant. What repeats isn't the language, it's the order of things — understand the whole problem, model the data before the interface, and leave the project in a state someone can pick up six months later.",
+      "Java is the language I know best: it's what I study in and what I compete in at hackathons, where the code is written by hand and against the clock. On my own projects I work differently — I lean on AI to write, and my part is deciding the architecture, reviewing what comes out, and signing off on nothing I don't understand. Both matter, and they aren't the same skill.",
       "I start things I don't yet know how to do. P2P Sail began before I'd touched a database in earnest, and the voice assistant before I'd ever written a service that runs on its own in the background. Learning as I go is part of the method, not an accident.",
     ],
     facts: [
@@ -83,10 +81,10 @@ export const en: Content = {
       { label: "EU work rights", value: "Italian citizenship" },
       {
         label: "Languages",
-        value:
-          "Spanish (native) · English B2 Cambridge · Italian [TODO: confirm level]",
+        value: "Spanish (native) · English B2 Cambridge · Italian A1",
       },
-      { label: "Looking for", value: "An internship or a first development role" },
+      { label: "Looking for", value: "An extracurricular internship or a junior role" },
+      { label: "Availability", value: "Immediately, around class hours" },
     ],
   },
 
@@ -94,12 +92,12 @@ export const en: Content = {
     eyebrow: "Projects",
     heading: "What I'm building",
     intro:
-      "Four things I've worked on. Three are code; the last is a business idea taken as far as it went.",
+      "Three things I've built: two on my own, and one in forty-eight hours at a hackathon.",
     items: [
       {
         id: "p2p-sail",
         name: "P2P Sail",
-        status: { label: "In development", tone: "building" },
+        status: { label: "On hold", tone: "exploring" },
         summary:
           "A marketplace for buying and selling second-hand sailing gear: sails, hulls, spars, fittings.",
         contribution:
@@ -116,8 +114,7 @@ export const en: Content = {
         links: [],
         todos: [
           "[TODO: confirm the final stack]",
-          "[TODO: decide whether the repository will be public]",
-          "[TODO: add a screenshot of the application]",
+          "[TODO: add a screenshot, even of the part that already works]",
         ],
       },
       {
@@ -144,32 +141,11 @@ export const en: Content = {
         summary:
           "A model that decides how to split a portfolio across equities and crypto, and when to move into cash instead.",
         contribution:
-          "Built as a team at the Fintech Chair hackathon at the University of Málaga, where we came third. Picking what to buy was the easy half: the model also had to decide when to sit in fiat because staying exposed wasn't worth it.",
-        tags: ["Fintech", "Modelling", "Teamwork"],
-        links: [],
-        todos: [
-          "[TODO: confirm the year of the hackathon]",
-          "[TODO: what we built it with: language, libraries, where the data came from]",
-          "[TODO: which part you worked on and how big the team was]",
-          "[TODO: a link to the repository or the pitch deck, if one exists]",
-        ],
-      },
-      {
-        id: "luggage-free",
-        name: "Luggage-free travel",
-        status: { label: "Validating", tone: "exploring" },
-        summary:
-          "An unlaunched service concept: luggage storage and clothing rental at the destination, so travellers can move between cities without checking a bag.",
-        contribution:
-          "It's an ideation and market-research exercise, not a product. I wrote a feasibility study centred on Málaga: who pays, how much, and what has to be true for the model to hold up. Still in validation.",
-        tags: [
-          "Market research",
-          "Business model",
-          "Feasibility study",
-          "Validation",
-        ],
+          "Built by three of us at the Fintech Chair hackathon at the University of Málaga in March 2026, where we came third. I designed the tactic: when to enter, when to stay out, and having the model's response grow logarithmically rather than linearly. No machine learning — the decision comes from rules you can read and argue with, which over forty-eight hours is an advantage rather than a limitation.",
+        tags: ["Python", "Decision rules", "Fintech", "Teamwork"],
         links: [],
       },
+
     ],
   },
 
@@ -183,7 +159,7 @@ export const en: Content = {
         id: "catedra-fintech",
         name: "Fintech Chair hackathon",
         event: "University of Málaga",
-        period: "[TODO: year]",
+        period: "March 2026",
         result: "3rd place",
         description:
           "The multi-asset allocation model listed above, under projects.",
@@ -194,14 +170,15 @@ export const en: Content = {
         event: "UMA and the public universities of Andalusia",
         period: "[TODO: year]",
         description:
-          "A region-wide competition with teams from several universities. [TODO: describe what we built]",
+          "A region-wide competition. Reasoning problems solved in Java against the clock: no framework helps here — either you find the algorithm or you don't.",
       },
       {
         id: "malacaton",
         name: "Malacatón",
         event: "Hackers Week · University of Málaga",
         period: "2024",
-        description: "[TODO: describe what we built at Malacatón]",
+        description:
+          "A program for checking the state of Spain's reservoirs — how much water each one holds, and which is the nearest.",
       },
       {
         id: "espet-up",
@@ -235,22 +212,11 @@ export const en: Content = {
     ],
     skills: [
       {
-        label: "Programming languages",
-        items: ["Java", "Scala 3", "SQL", "C", "C++", "TypeScript"],
+        label: "Languages",
+        items: ["Java", "Scala 3", "Python", "SQL", "C", "C++", "TypeScript"],
       },
-      {
-        label: "Tools",
-        items: [
-          "Git",
-          "Linux",
-          "PostgreSQL",
-          "[TODO: expand and confirm the list of tools]",
-        ],
-      },
-      {
-        label: "Certifications",
-        items: ["Cambridge English B2"],
-      },
+      { label: "Tools", items: ["Git", "Linux", "PostgreSQL"] },
+      { label: "Certifications", items: ["Cambridge English B2"] },
     ],
   },
 
@@ -266,12 +232,12 @@ export const en: Content = {
     phoneLabel: "Phone",
     links: [
       { label: "GitHub", href: "https://github.com/nschioppa", external: true },
-      // Sin perfil todavia: el href queda en "#" hasta que exista la URL.
-      { label: "LinkedIn", href: "#" },
-      { label: "Instagram", href: "https://instagram.com/nicoschioppa", external: true },
-      { label: "TikTok", href: "https://tiktok.com/@nschioppa", external: true },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/nicolas-schioppa-4808a2297/",
+        external: true,
+      },
     ],
-    todos: ["[TODO: the LinkedIn profile URL is missing]"],
   },
 
   footer: {

@@ -54,7 +54,7 @@ export const en: Content = {
     roleLead: "Software engineering student",
     roleAccent: "Backend, data and AI-powered apps",
     bio: [
-      "I'm reading Software Engineering at the University of Málaga, and I'm spending this semester at Politecnico di Milano. I'm looking for an internship or a first development role in Milan.",
+      "I'm studying Software Engineering at the University of Málaga, and I'm spending this semester at Politecnico di Milano. I'm looking for an internship or a first development role in Milan.",
       "What interests me is the part nobody sees: how the data is modelled, how an architecture holds up as a project grows, and what it takes to carry something from an idea to a thing that actually works.",
       "Away from the keyboard I've raced sailing dinghies since I was a kid. That's where the habit of preparing properly and finishing what I start comes from.",
     ],
@@ -72,7 +72,7 @@ export const en: Content = {
     heading: "How I work",
     paragraphs: [
       "I was born in Argentina, I hold Italian citizenship, and I've studied in Spain for years. Since September I've been in Milan, on exchange at the Politecnico.",
-      "Java is the language I know best: it's what I study in and what I compete in at hackathons, where the code is written by hand and against the clock. On my own projects I work differently — I lean on AI to write, and my part is deciding the architecture, reviewing what comes out, and signing off on nothing I don't understand. Both matter, and they aren't the same skill.",
+      "Java is the language I know best: it's the language I study with and the one I compete with at hackathons, where the code is written by hand and against the clock. On my own projects I work differently — I lean on AI to write, and my part is deciding the architecture, reviewing what comes out, and signing off on nothing I don't understand. Both matter, and they aren't the same skill.",
       "I start things I don't yet know how to do. P2P Sail began before I'd touched a database in earnest, and the voice assistant before I'd ever written a service that runs on its own in the background. Learning as I go is part of the method, not an accident.",
     ],
     facts: [
@@ -104,7 +104,7 @@ export const en: Content = {
         name: "P2P Sail",
         status: { label: "On hold", tone: "exploring" },
         summary:
-          "A marketplace for buying and selling second-hand sailing gear: sails, hulls, spars, fittings.",
+          "A marketplace for buying and selling second-hand sailing gear: sails, hulls, masts, fittings.",
         contribution:
           "I started it with almost no web or database experience, so the project became the course. What exists today is the business model, the domain model and the database schema; the application itself does not. Modelling before coding was a decision, not a delay: the schema already separates product families with their own validated attributes, and that is what later decides what can be searched and filtered.",
         tags: ["Data modelling", "PostgreSQL", "Prisma", "Zod", "TypeScript", "Next.js"],

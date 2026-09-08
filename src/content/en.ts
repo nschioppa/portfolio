@@ -101,19 +101,10 @@ export const en: Content = {
         summary:
           "A marketplace for buying and selling second-hand sailing gear: sails, hulls, spars, fittings.",
         contribution:
-          "I started it with almost no web or database experience, so the project became the course: data modelling, architecture, UX and business model. I chose to ship the web app first and the mobile app later, writing the backend, authentication and business logic to be reused as they are.",
-        tags: [
-          "Next.js",
-          "TypeScript",
-          "Prisma",
-          "PostgreSQL",
-          "Architecture",
-          "Data modelling",
-          "UX",
-        ],
+          "I started it with almost no web or database experience, so the project became the course. What exists today is the business model, the domain model and the database schema; the application itself does not. Modelling before coding was a decision, not a delay: the schema already separates product families with their own validated attributes, and that is what later decides what can be searched and filtered.",
+        tags: ["Data modelling", "PostgreSQL", "Prisma", "Zod", "TypeScript", "Next.js"],
         links: [],
         todos: [
-          "[TODO: confirm the final stack]",
           "[TODO: add a screenshot, even of the part that already works]",
         ],
       },
@@ -168,7 +159,7 @@ export const en: Content = {
         id: "ada-byron",
         name: "Ada Byron hackathon",
         event: "UMA and the public universities of Andalusia",
-        period: "[TODO: year]",
+        period: "April 2026",
         description:
           "A region-wide competition. Reasoning problems solved in Java against the clock: no framework helps here — either you find the algorithm or you don't.",
       },

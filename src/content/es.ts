@@ -103,19 +103,10 @@ export const es: Content = {
         summary:
           "Marketplace de compraventa de equipamiento náutico de segunda mano: velas, cascos, mástiles, accesorios.",
         contribution:
-          "Lo empecé sin experiencia previa en web ni en bases de datos, así que el proyecto terminó siendo el curso: modelado de datos, arquitectura, UX y modelo de negocio. Decidí hacer la web primero y la app móvil después, con el backend, la autenticación y la lógica de negocio escritos para reutilizarse tal cual.",
-        tags: [
-          "Next.js",
-          "TypeScript",
-          "Prisma",
-          "PostgreSQL",
-          "Arquitectura",
-          "Modelado de datos",
-          "UX",
-        ],
+          "Lo empecé sin experiencia previa en web ni en bases de datos, así que el proyecto terminó siendo el curso. Hoy están escritos el modelo de negocio, el modelo de dominio y el esquema de la base de datos; la aplicación todavía no. Modelar antes de programar fue una decisión y no una demora: el esquema ya separa las familias de producto con sus atributos propios validados, y eso es lo que decide después qué se puede buscar y filtrar.",
+        tags: ["Modelado de datos", "PostgreSQL", "Prisma", "Zod", "TypeScript", "Next.js"],
         links: [],
         todos: [
-          "[TODO: confirmar el stack definitivo]",
           "[TODO: agregar una captura, aunque sea de la parte que ya funciona]",
         ],
       },
@@ -170,7 +161,7 @@ export const es: Content = {
         id: "ada-byron",
         name: "Hackathon Ada Byron",
         event: "UMA y universidades públicas de Andalucía",
-        period: "[TODO: año]",
+        period: "Abril de 2026",
         description:
           "Competición a nivel andaluz. Problemas de razonamiento resueltos en Java contra reloj: aquí no hay framework que ayude, o sacas el algoritmo o no lo sacas.",
       },

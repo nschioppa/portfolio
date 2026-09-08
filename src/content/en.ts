@@ -86,7 +86,7 @@ export const en: Content = {
       {
         label: "Experience",
         value:
-          "Four consecutive summers at the sailing camp at Real Club El Candado, Málaga",
+          "Sailing instructor at Real Club El Candado, Málaga — summers 2023 to 2026",
       },
       { label: "Looking for", value: "An extracurricular internship or a junior role" },
       { label: "Availability", value: "Immediately, around class hours" },

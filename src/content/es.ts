@@ -90,7 +90,7 @@ export const es: Content = {
       {
         label: "Experiencia",
         value:
-          "Cuatro veranos seguidos en el campamento de vela del Real Club El Candado, Málaga",
+          "Monitor de vela en el Real Club El Candado, Málaga — veranos de 2023 a 2026",
       },
       { label: "Busco", value: "Prácticas extracurriculares o primer puesto junior" },
       { label: "Disponibilidad", value: "Desde ya, compatible con las clases" },

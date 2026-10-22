@@ -32,6 +32,17 @@ export interface NavContent {
   languageLabel: string;
 }
 
+export interface SoftwareChartContent {
+  eyebrow: string;
+  app: string;
+  appDetail: string;
+  api: string;
+  apiDetail: string;
+  data: string;
+  dataDetail: string;
+  caption: string;
+}
+
 export interface HeroContent {
   /** Chip de arriba: "Milan, Italia - Erasmus". */
   location: string;
@@ -46,6 +57,7 @@ export interface HeroContent {
   ctaSecondary: Link;
   ctaTertiary?: Link;
   scrollHint: string;
+  chart: SoftwareChartContent;
   /** Cosas pendientes. Se pintan visibles y en gris para que no se olviden. */
   todos?: string[];
 }
@@ -60,6 +72,13 @@ export interface AboutContent {
   heading: string;
   paragraphs: string[];
   facts: Fact[];
+  photo: {
+    alt: string;
+    eyebrow: string;
+    title: string;
+    body: string;
+    caption: string;
+  };
   /** Cosas pendientes. Se pintan visibles y en gris para que no se olviden. */
   todos?: string[];
 }

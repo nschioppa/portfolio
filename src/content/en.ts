@@ -30,14 +30,24 @@ export const en: Content = {
   hero: {
     location: "Milan, Italy · Open to internships",
     name: "Nicolás Schioppa",
-    roleLead: "Software with purpose.",
+    roleLead: "Software Engineering.",
     roleAccent: "Backend, data & AI.",
     bio: [
-      "I study Software Engineering in Málaga and I'm spending this year at Politecnico di Milano. I like understanding how things work and turning ideas into projects. I'm looking for a development internship in Milan.",
+      "I study at the University of Málaga and I'm spending this year at Politecnico di Milano. I enjoy building software, understanding the decisions behind it and learning through projects. I'm looking for a development internship in Milan.",
     ],
     ctaPrimary: { label: "Explore my projects", href: "#projects" },
     ctaSecondary: { label: "Get in touch", href: "#contact" },
     scrollHint: "Keep exploring",
+    chart: {
+      eyebrow: "Software architecture",
+      app: "Application",
+      appDetail: "Interface",
+      api: "API",
+      apiDetail: "Logic",
+      data: "Data",
+      dataDetail: "Persistence",
+      caption: "From interface to data.",
+    },
   },
 
   about: {
@@ -45,7 +55,7 @@ export const en: Content = {
     heading: "Curiosity beyond the code.",
     paragraphs: [
       "I'm from Argentina, hold Italian citizenship and call Málaga home. Right now, I'm studying in Milan. I'm drawn to backend development: organizing data, thinking through architecture and understanding what makes a project work.",
-      "Java is my strongest language. My own projects also give me room to explore Python and AI tools, reviewing the code and learning from each decision. Away from the screen, I've raced sailing dinghies since childhood and spent four summers teaching people to sail.",
+      "Java is my strongest language. My own projects also give me room to explore Python and AI tools, reviewing the code and learning from each decision.",
     ],
     facts: [
       { label: "Currently", value: "Milan · On exchange until July 2027" },
@@ -56,6 +66,13 @@ export const en: Content = {
         value: "Sailing instructor at El Candado, Málaga · 2023–2026",
       },
     ],
+    photo: {
+      alt: "Nicolás Schioppa sailing a racing dinghy, surrounded by spray.",
+      eyebrow: "Away from the screen",
+      title: "Out on the water, too.",
+      body: "I've raced sailing dinghies since childhood and spent four summers teaching people to sail at El Candado. The focus, decisions and teamwork are part of what I enjoy about the sport.",
+      caption: "Competitive sailing · Nicolás Schioppa",
+    },
   },
 
   projects: {
@@ -112,6 +129,7 @@ export const en: Content = {
         name: "Espet-Up",
         event: "Málaga",
         period: "July 2026",
+        result: "Third place",
         description: "Business proposals tackling housing, mobility, tourism and local commerce.",
       },
       {

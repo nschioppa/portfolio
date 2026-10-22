@@ -1,4 +1,4 @@
-import { SailingIllustration } from "@/components/SailingIllustration";
+import { SoftwareChart } from "@/components/SoftwareChart";
 import type { HeroContent, Link } from "@/content/types";
 
 function HeroLink({ link, primary = false }: { link: Link; primary?: boolean }) {
@@ -31,7 +31,7 @@ export function Hero({ content }: { content: HeroContent }) {
             </p>
             <h1 id="hero-title" className="mt-7 font-serif text-hero font-normal md:mt-8">
               <span className="block">{firstName}{" "}</span>
-              <span className="block font-normal italic text-accent">{lastName.join(" ")}</span>
+              <span className="block font-normal">{lastName.join(" ")}</span>
             </h1>
             <p className="mt-7 text-title font-medium tracking-tight">{content.roleLead}</p>
             <p className="mt-1 text-body text-muted">{content.roleAccent}</p>
@@ -44,7 +44,7 @@ export function Hero({ content }: { content: HeroContent }) {
               {content.ctaTertiary ? <HeroLink link={content.ctaTertiary} /> : null}
             </div>
           </div>
-          <SailingIllustration />
+          <SoftwareChart content={content.chart} />
         </div>
         <div className="flex items-center justify-between gap-4 border-t border-line pt-5">
           <a href="#projects" className="mono-label inline-flex min-h-11 items-center gap-3 hover:text-accent">

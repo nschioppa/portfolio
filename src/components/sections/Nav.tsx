@@ -136,7 +136,7 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
       </a>
 
       <div className="shell flex h-20 items-center justify-between gap-3">
-        <Link href={`/${lang}`} className="inline-flex min-h-11 items-center gap-2.5 text-ink transition-colors hover:text-accent motion-reduce:transition-none">
+        <Link href={`/${lang}#main`} className="inline-flex min-h-11 items-center gap-2.5 text-ink transition-colors hover:text-accent motion-reduce:transition-none">
           <svg aria-hidden="true" viewBox="0 0 28 32" fill="none" className="h-8 w-7 text-accent" focusable="false">
             <path d="M13 2v23M10 6 2 23h8V6ZM16 9v14h10L16 9Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
             <path d="M2 27c4 0 4 3 8 3s4-3 8-3 4 3 8 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />

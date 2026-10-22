@@ -1,7 +1,7 @@
 /** Original vector artwork: light to load, decorative, and sharp at every size. */
 export function SailingIllustration() {
   return (
-    <div aria-hidden="true" className="hero-art pointer-events-none relative mx-auto w-full max-w-[390px] select-none md:max-w-none">
+    <div aria-hidden="true" className="hero-art pointer-events-none relative mx-auto w-full max-w-[240px] select-none md:max-w-none">
       <svg viewBox="0 0 520 550" fill="none" focusable="false">
         <defs>
           <linearGradient id="sea" x1="115" y1="70" x2="450" y2="520" gradientUnits="userSpaceOnUse"><stop stopColor="#c9dbcf" /><stop offset="1" stopColor="#8bb7ac" /></linearGradient>

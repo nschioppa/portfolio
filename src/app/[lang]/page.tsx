@@ -8,6 +8,7 @@ import { Hackathons } from "@/components/sections/Hackathons";
 import { Education } from "@/components/sections/Education";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
+import { VoyageProgress } from "@/components/ui/VoyageProgress";
 
 export default async function Page({
   params,
@@ -23,13 +24,14 @@ export default async function Page({
       <Nav content={content.nav} lang={lang} />
       <main id="main">
         <Hero content={content.hero} />
-        <About content={content.about} />
         <Projects content={content.projects} />
         <Hackathons content={content.hackathons} />
+        <About content={content.about} />
         <Education content={content.education} />
         <Contact content={content.contact} />
       </main>
       <Footer content={content.footer} />
+      <VoyageProgress />
     </>
   );
 }

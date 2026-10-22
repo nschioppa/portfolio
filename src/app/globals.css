@@ -1,297 +1,147 @@
 @import "tailwindcss";
 
-/* ===========================================================================
-   Sistema visual
-   ---------------------------------------------------------------------------
-   Oscuro, "tech/dev" primero, con la vela como acento y no como decorado.
-   Tailwind v4: no hay `tailwind.config`. Todo lo que se declara en `@theme`
-   genera utilidades (`bg-surface`, `text-muted`, `rounded-card`, `text-hero`...)
-   y ademas queda publicado como variable CSS en `:root`.
-   =========================================================================== */
-
 @theme {
-  /* ---- Color -------------------------------------------------------------
-     El fondo es casi negro pero AZULADO (H=250). Sobre un gris neutro el
-     celeste del acento se ve sucio; sobre este azul, limpio.
-
-     Contrastes medidos (WCAG 2.1, sobre el sRGB que queda tras el mapeo de
-     gama). TODO color de texto pasa AA (4.5:1) contra las CUATRO superficies.
-     El peor caso es `faint` sobre `surface-3`, que es una tarjeta en hover:
-
-                    base     surface   surface-2  surface-3
-       ink         17.02      14.99      13.93      12.44
-       muted        8.59       7.57       7.03       6.28
-       faint        6.38       5.62       5.22       4.66  <- peor par
-       accent       9.98       8.79       8.17       7.30
-
-     `faint` esta a 0.665 de luminosidad y no mas abajo justamente por esa
-     ultima columna: a 0.62 se quedaba en 3.75:1 sobre la tarjeta iluminada.
-  */
-
-  /* Superficies. base -> surface (franja) -> surface-2 (tarjeta) ->
-     surface-3 (tarjeta en hover). */
-  --color-base: oklch(0.16 0.015 250);
-  --color-surface: oklch(0.225 0.019 250);
-  --color-surface-2: oklch(0.252 0.021 250);
-  --color-surface-3: oklch(0.288 0.023 250);
-
-  /* Bordes. `line` es la hairline de reposo (1.14:1 contra el fondo: se
-     adivina el borde, no se lee como una caja). `line-hi` para separadores
-     que si tienen que verse. */
-  --color-line: oklch(0.32 0.032 248);
-  --color-line-hi: oklch(0.44 0.06 240);
-
-  /* Azul profundo secundario: superficies y bordes, NUNCA texto (1.65:1). */
-  --color-deep: oklch(0.34 0.07 250);
-
-  /* El unico acento. Celeste nautico luminoso (#51c7f1). Se usa con avaricia:
-     punto de estado, subrayados, borde de tarjeta en hover, segunda linea del
-     titulo del hero, foco del teclado.
-
-     `accent-dim` es para RELLENOS, iconos grandes y trazos, no para texto
-     pequeno: sobre tarjeta se queda en 4.47:1 y sobre tarjeta en hover en
-     4.00:1, o sea que cumple AA de texto grande (3:1) pero no de cuerpo. */
-  --color-accent: oklch(0.78 0.12 225);
-  --color-accent-dim: oklch(0.62 0.1 228);
-
-  /* Texto, tres niveles. `ink` es un blanco levemente calido (H=85): el #fff
-     puro sobre fondo oscuro deslumbra a tamano de parrafo.
-     ink = cuerpo y titulos | muted = secundario | faint = metadatos y todos. */
-  --color-ink: oklch(0.955 0.008 85);
-  --color-muted: oklch(0.745 0.022 245);
-  --color-faint: oklch(0.665 0.02 245);
-
-  /* Estados de proyecto (StatusTone). "live" reutiliza el acento; los otros
-     tres son senales, no marca: croma bajo (<=0.11) y solo en puntos de 8px,
-     para no convertir la pagina en un arcoiris. */
-  --color-tone-live: var(--color-accent);
-  --color-tone-building: oklch(0.8 0.11 85);
-  --color-tone-exploring: oklch(0.74 0.09 285);
-  --color-tone-done: var(--color-muted);
-
-  /* ---- Tipografia --------------------------------------------------------
-     Una sans geometrica para todo y la mono SOLO para detalles (eyebrows,
-     anos, coordenadas, etiquetas). Ese contraste es lo que da el aire "dev".
-     Las variables --font-geist-* las inyecta next/font desde el layout. */
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, "SF Mono",
-    Menlo, Consolas, monospace;
-
-  /* Escala fluida. El maximo se alcanza justo antes del ancho de trabajo
-     habitual, y el minimo protege los 360px: a 360px `text-hero` da 40px, con
-     lo que "Schioppa" (8 caracteres, ~0.52em cada uno) ocupa 166px de los
-     ~312px utiles. No rompe. */
-  --text-hero: clamp(2.5rem, 1.35rem + 5.6vw, 6rem); /* 40px -> 96px, tope a ~1330px */
-  --text-hero--line-height: 0.95;
-  --text-hero--letter-spacing: -0.035em;
-  --text-hero--font-weight: 600;
-
-  --text-display: clamp(1.75rem, 1.15rem + 2.6vw, 3rem); /* h2 de seccion */
+  --color-base: #f7f5ef;
+  --color-surface: #eeeee6;
+  --color-surface-2: #e8ede8;
+  --color-surface-3: #dde7e1;
+  --color-ink: #15343d;
+  --color-muted: #52666a;
+  --color-faint: #576b70;
+  --color-accent: #24685f;
+  --color-accent-dim: #194e48;
+  --color-line: #d4ddd6;
+  --color-line-hi: #a8bdb4;
+  --color-deep: #102c36;
+  --color-coral: #b95f45;
+  --color-tone-live: #24685f;
+  --color-tone-building: #95620f;
+  --color-tone-exploring: #72577d;
+  --color-tone-done: #52666a;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --text-hero: clamp(3.6rem, 7.5vw, 7rem);
+  --text-hero--line-height: .96;
+  --text-hero--letter-spacing: -.065em;
+  --text-display: clamp(2.35rem, 4vw, 4rem);
   --text-display--line-height: 1.08;
-  --text-display--letter-spacing: -0.022em;
-
-  --text-title: clamp(1.15rem, 1.02rem + 0.6vw, 1.5rem); /* h3, nombre de proyecto */
+  --text-display--letter-spacing: -.04em;
+  --text-title: clamp(1.25rem, 1rem + .8vw, 1.65rem);
   --text-title--line-height: 1.25;
-  --text-title--letter-spacing: -0.012em;
-
-  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem); /* entradillas y bio */
-  --text-lead--line-height: 1.62;
-
+  --text-title--letter-spacing: -.025em;
+  --text-lead: clamp(1.0625rem, 1rem + .2vw, 1.2rem);
+  --text-lead--line-height: 1.7;
   --text-body: 1rem;
-  --text-body--line-height: 1.7;
-
-  --text-small: 0.875rem;
-  --text-small--line-height: 1.6;
-
-  --text-eyebrow: 0.75rem;
-  --text-eyebrow--line-height: 1;
-  --text-eyebrow--letter-spacing: 0.18em;
-
-  --text-micro: 0.6875rem;
-  --text-micro--line-height: 1.45;
-  --text-micro--letter-spacing: 0.06em;
-
-  /* ---- Espacio -----------------------------------------------------------
-     Mucho aire: la seccion respira 6rem en movil y 10rem a partir de ~1320px.
-     `gutter` es el margen lateral del contenedor. */
-  --spacing-section: clamp(6rem, 3.4rem + 8vw, 10rem);
-  --spacing-gutter: clamp(1.25rem, 4vw, 2.5rem);
-
-  /* ---- Anchos ------------------------------------------------------------
-     `measure` limita la linea de lectura. OJO con la unidad: `ch` mide el
-     ancho del cero, que en Geist es 0.66em, mientras que la letra media ronda
-     los 0.5em. Medido en la pagina ya montada, 68ch daban entre 79 y 94
-     caracteres por linea, muy por encima del rango comodo de 45-75. A 56ch la
-     medicion baja a 65-77. El numero sale de medir, no de la unidad. */
-  --container-measure: 56ch;
+  --text-body--line-height: 1.75;
+  --text-small: .875rem;
+  --text-small--line-height: 1.65;
+  --text-eyebrow: .6875rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: .16em;
+  --text-micro: .75rem;
+  --text-micro--line-height: 1.5;
+  --text-micro--letter-spacing: .04em;
+  --spacing-section: clamp(4.5rem, 7.5vw, 7rem);
+  --spacing-gutter: clamp(1.25rem, 4vw, 3rem);
+  --container-page: 1240px;
+  --container-measure: 58ch;
   --container-narrow: 46ch;
-
-  /* ---- Radios ------------------------------------------------------------ */
-  --radius-card: 0.875rem;
+  --radius-card: .375rem;
   --radius-pill: 9999px;
-
-  /* ---- Movimiento --------------------------------------------------------
-     Un solo easing propio: salida larga y suave, para que las entradas al
-     hacer scroll no den un frenazo. */
-  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
-
-  /* Latido del punto "live". Muy leve a proposito: un halo que se abre y se
-     apaga, sin tocar el punto en si. */
-  --animate-beacon: beacon 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-
+  --ease-out-soft: cubic-bezier(.22, 1, .36, 1);
+  --animate-beacon: beacon 3s ease-out infinite;
   @keyframes beacon {
-    0% {
-      transform: scale(1);
-      opacity: 0.5;
-    }
-    70%,
-    100% {
-      transform: scale(2.8);
-      opacity: 0;
-    }
+    0% { transform: scale(1); opacity: .35; }
+    75%, 100% { transform: scale(2.5); opacity: 0; }
   }
 }
-
-/* ===========================================================================
-   Base. Tailwind v4 ya trae su preflight con `@import "tailwindcss"`, asi que
-   aqui va solo lo propio del sitio.
-   =========================================================================== */
-
 @layer base {
-  /* En v4 el borde por defecto es `currentColor`, no un gris. Se fija a la
-     hairline del sistema para que `border` a secas ya salga bien. */
-  *,
-  ::before,
-  ::after {
-    border-color: var(--color-line);
-  }
-
-  :root {
-    /* Scrollbars, autofill y controles nativos en oscuro sin escribir CSS. */
-    color-scheme: dark;
-  }
-
-  html {
-    -webkit-text-size-adjust: 100%;
-    /* Compensa la cabecera fija al saltar a un ancla (#projects, #contact...). */
-    scroll-padding-top: 5.5rem;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
-  }
-
+  *, ::before, ::after { border-color: var(--color-line); }
+  :root { color-scheme: light; }
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 6rem; }
   body {
-    /* Se redeclaran aqui por si las clases de next/font acaban en <body> en vez
-       de en <html>: asi `var(--font-geist-*)` se resuelve en el mismo elemento
-       que las define, y las utilidades `font-sans` / `font-mono` funcionan en
-       los dos montajes. */
-    --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
-      "Segoe UI", Roboto, sans-serif;
-    --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, "SF Mono",
-      Menlo, Consolas, monospace;
-
-    background-color: var(--color-base);
+    background: var(--color-base);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: var(--text-body);
-    line-height: 1.7;
-    /* Texto claro sobre fondo oscuro: sin esto el trazo engorda y se emborrona. */
+    line-height: 1.75;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    text-wrap: balance;
-  }
-
-  p {
-    text-wrap: pretty;
-  }
-
-  /* Foco visible unico y en el acento. Nunca se quita: es la unica pista que
-     tiene quien navega con teclado. */
-  :focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-  }
-
-  ::selection {
-    background-color: color-mix(in oklab, var(--color-accent) 28%, transparent);
-    color: var(--color-ink);
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+  ::selection { background: #c4ded3; color: #102c36; }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
   }
 }
-
-/* ===========================================================================
-   Utilidades propias
-   =========================================================================== */
-
-/* Contenedor de pagina: centra, limita a 1152px y aplica el margen lateral. */
 @utility shell {
   width: 100%;
   margin-inline: auto;
   max-width: var(--container-page);
   padding-inline: var(--spacing-gutter);
 }
-
-/* Aire vertical de una seccion. */
-@utility section-y {
-  padding-block: var(--spacing-section);
-}
-
-/* El "eyebrow" de cada seccion: mono, versalitas, en el acento. */
+@utility section-y { padding-block: var(--spacing-section); }
 @utility eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-eyebrow);
-  line-height: 1;
-  letter-spacing: 0.18em;
+  line-height: 1.4;
+  letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--color-accent);
 }
-
-/* Etiqueta mono discreta: anos del timeline, coordenadas, metadatos.
-   `tabular-nums` evita que los digitos bailen al alinearlos en columna. */
 @utility mono-label {
   font-family: var(--font-mono);
   font-size: var(--text-micro);
-  letter-spacing: 0.06em;
+  letter-spacing: .04em;
   color: var(--color-faint);
   font-variant-numeric: tabular-nums;
 }
-
-/* Subrayado que crece desde la izquierda. Se dibuja con background-size en vez
-   de con un pseudoelemento para que funcione en enlaces que parten de linea. */
 @utility link-underline {
   background-image: linear-gradient(var(--color-accent), var(--color-accent));
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 0% 1px;
   transition: background-size 280ms var(--ease-out-soft);
-
-  &:hover,
-  &:focus-visible {
-    background-size: 100% 1px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
+  &:hover, &:focus-visible { background-size: 100% 1px; }
+  @media (prefers-reduced-motion: reduce) { transition: none; }
+}
+@utility rule-soft { height: 1px; border: 0; background: var(--color-line); }
+.contact-section {
+  --color-ink: #f6f3eb;
+  --color-muted: #c4d2d3;
+  --color-faint: #afc2c7;
+  --color-accent: #99d0c9;
+  --color-line: #ffffff26;
+  --color-line-hi: #ffffff55;
+  --color-base: #102c36;
+  --color-surface-2: #173742;
+  --color-surface-3: #20454f;
+  background: #102c36;
+}
+.hero-art { isolation: isolate; }
+.hero-art svg { display: block; width: 100%; height: auto; }
+.sea-line { transform-origin: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-sailboat { animation: boat-drift 7s ease-in-out infinite; transform-origin: 275px 320px; }
+  .sea-line { animation: sea-drift 9s ease-in-out infinite alternate; }
+  .sea-line:nth-child(even) { animation-delay: -4s; }
+  .chart-route { stroke-dasharray: 5 9; animation: route-flow 25s linear infinite; }
+  @supports (animation-timeline: view()) {
+    .hero-art { animation: chart-sail linear both; animation-timeline: view(); animation-range: exit 0% exit 90%; }
   }
 }
-
-/* Separador que se desvanece por los extremos. */
-@utility rule-soft {
-  height: 1px;
-  border: 0;
-  background-image: linear-gradient(
-    to right,
-    transparent,
-    var(--color-line-hi),
-    transparent
-  );
+@keyframes boat-drift {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-7px) rotate(1deg); }
+}
+@keyframes sea-drift { from { transform: translateX(-5px); } to { transform: translateX(5px); } }
+@keyframes route-flow { to { stroke-dashoffset: -140; } }
+@keyframes chart-sail { to { transform: translateY(65px) rotate(3deg); } }
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after { animation: none !important; scroll-behavior: auto !important; transition-duration: 0s !important; }
 }

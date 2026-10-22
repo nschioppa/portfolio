@@ -1,41 +1,33 @@
-# Portfolio de Nicolas Schioppa
+# Portfolio de Nicolás Schioppa
 
-Sitio personal en Next.js (App Router) + TypeScript + Tailwind, pensado para
-desplegarse en Vercel. Bilingue (castellano e ingles) con rutas estaticas por
-idioma.
+Portfolio bilingüe en Next.js, React y TypeScript. Rutas estáticas `/en` y `/es`; la raíz redirige al inglés.
 
 ## Desarrollo
 
 ```sh
 npm install
-npm run dev     # http://localhost:3000
+npm run dev
+npm run typecheck
+npm run build
 ```
 
-## Como se edita el texto
+Si el entorno restringe las conexiones entre procesos de Turbopack, se puede comprobar el build con `npm run build -- --webpack`.
 
-Todo el copy vive en `src/content/es.ts` y `src/content/en.ts`. Los dos cumplen
-el tipo `Content` de `src/content/types.ts`: si falta una clave en un idioma, el
-build falla en vez de dejar un hueco en la pagina. **No hay texto escrito dentro
-de los componentes**, asi que para cambiar una frase no hace falta tocar JSX.
+## Contenido y diseño
 
-Lo que queda por completar esta marcado como `[TODO: ...]` dentro de esos mismos
-ficheros y se ve en la pagina, para que no se olvide.
+- Todos los textos están en `src/content/es.ts` y `en.ts`, con un contrato común en `types.ts`.
+- El sistema visual está en `src/app/globals.css`: marfil, azul marino, verde mar y tipografía del sistema sin descargas de fuentes.
+- `SailingIllustration.tsx` contiene la ilustración SVG original del inicio.
+- `VoyageProgress.tsx` dibuja una ruta decorativa que avanza con el scroll en escritorio.
+- Las entradas de secciones se activan al aparecer en pantalla. El contenido sigue visible sin JavaScript y las animaciones respetan la preferencia de movimiento reducido.
+- La navegación móvil tiene cierre con Escape y clic fuera. El cambio de idioma conserva la sección visible.
 
-## Idiomas
+## Publicación
 
-- `/en` y `/es` son paginas estaticas independientes.
-- `/` redirige a `/en` (el publico objetivo son recruiters en Milan).
-- El selector de idioma conserva la seccion en la que estas.
+GitHub: https://github.com/nschioppa/portfolio
 
-## Estructura
+Vercel despliega producción desde `main` y genera vistas previas para otras ramas.
 
-| Ruta | Que hay |
-|---|---|
-| `src/content/` | todo el texto y el contrato de tipos |
-| `src/app/[lang]/` | la pagina, una por idioma |
-| `src/components/` | secciones y primitivas de UI |
-| `src/lib/` | utilidades (hooks de scroll, helpers) |
+Dominio: https://nicoschioppa.com
 
-## Despliegue
-
-Conectado a Vercel: cada push a `main` despliega solo.
+`NEXT_PUBLIC_SITE_URL` permite sustituir la URL canónica; por defecto se usa el dominio público.

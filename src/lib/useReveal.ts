@@ -1,85 +1,73 @@
 "use client";
 
-import {
-  useEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-  type RefObject,
-} from "react";
+import { useEffect, useRef, type RefObject } from "react";
 
 export interface UseRevealOptions {
-  /** Fraccion del elemento que tiene que entrar para disparar. */
+  delay?: number;
   threshold?: number;
-  /** Margen del observer. El -12% de abajo dispara justo antes del borde. */
   rootMargin?: string;
 }
 
-export interface UseRevealResult<T extends HTMLElement> {
-  ref: RefObject<T | null>;
-  /** Pasa a true la primera vez que entra en pantalla y ya no vuelve atras. */
-  visible: boolean;
-}
-
-const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
-
-/**
- * Se salta la animacion si el sistema pide menos movimiento o si el navegador
- * no trae IntersectionObserver. Lo segundo importa: sin el, el contenido se
- * quedaria escondido para siempre esperando un disparo que no llega.
- *
- * Va por `useSyncExternalStore` y no por un `setState` dentro de un efecto
- * porque eso ultimo encadena renders (y React 19 lo marca como error de lint).
- * Ademas resuelve el desajuste de hidratacion el solo: en servidor no hay
- * media query, asi que se sirve el mismo HTML para todos y se corrige al
- * hidratar.
- */
-function subscribeSkip(onChange: () => void): () => void {
-  const media = window.matchMedia(REDUCED_MOTION);
-  media.addEventListener("change", onChange);
-  return () => media.removeEventListener("change", onChange);
-}
-
-function getSkip(): boolean {
-  return (
-    typeof IntersectionObserver === "undefined" ||
-    window.matchMedia(REDUCED_MOTION).matches
-  );
-}
-
-function getSkipOnServer(): boolean {
-  return false;
-}
-
-export function useReveal<T extends HTMLElement = HTMLElement>(
-  options: UseRevealOptions = {},
-): UseRevealResult<T> {
-  const { threshold = 0.15, rootMargin = "0px 0px -12% 0px" } = options;
-
+/** Content stays visible in server HTML and if animation is unavailable. */
+export function useReveal<T extends HTMLElement = HTMLElement>({
+  delay = 0,
+  threshold = 0.08,
+  rootMargin = "0px 0px -5% 0px",
+}: UseRevealOptions = {}): { ref: RefObject<T | null> } {
   const ref = useRef<T | null>(null);
-  const [entered, setEntered] = useState(false);
-  const skip = useSyncExternalStore(subscribeSkip, getSkip, getSkipOnServer);
 
   useEffect(() => {
-    if (skip) return;
     const node = ref.current;
-    if (!node) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+    // Never replay an entrance on content the reader can already see.
+    if (
+      !node ||
+      motion.matches ||
+      typeof IntersectionObserver === "undefined" ||
+      typeof node.animate !== "function" ||
+      node.getBoundingClientRect().top < window.innerHeight
+    ) {
+      return;
+    }
+
+    let animation: Animation | undefined;
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          setEntered(true);
-          observer.disconnect(); // ya no hace falta: la animacion es de ida
-          return;
-        }
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        observer.disconnect();
+        if (motion.matches) return;
+
+        animation = node.animate(
+          [
+            { opacity: 0, transform: "translateY(18px)" },
+            { opacity: 1, transform: "translateY(0)" },
+          ],
+          {
+            duration: 620,
+            delay: Math.min(Math.max(delay, 0), 180),
+            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+            fill: "backwards",
+          },
+        );
       },
       { threshold, rootMargin },
     );
 
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [skip, threshold, rootMargin]);
+    const onMotionChange = () => {
+      if (!motion.matches) return;
+      observer.disconnect();
+      animation?.cancel();
+    };
 
-  return { ref, visible: skip || entered };
+    observer.observe(node);
+    motion.addEventListener("change", onMotionChange);
+    return () => {
+      observer.disconnect();
+      animation?.cancel();
+      motion.removeEventListener("change", onMotionChange);
+    };
+  }, [delay, threshold, rootMargin]);
+
+  return { ref };
 }

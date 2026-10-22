@@ -1,44 +1,23 @@
 import type { Content } from "./types";
 
-/**
- * Contenido en ingles.
- *
- * Misma estructura que `es.ts`: mismos ids de proyecto y mismo numero de
- * entradas en cada array, para que el selector de idioma no cambie el layout.
- * Los comentarios van sin tildes (consola de Windows en cp1252); las cadenas
- * visibles se renderizan como HTML UTF-8 y llevan los signos correctos.
- */
 export const en: Content = {
   meta: {
-    title: "Nicolás Schioppa — Software Engineering Student in Milan",
+    title: "Nicolás Schioppa · Software, data & new ideas",
     description:
-      "Software engineering at the University of Málaga, now on Erasmus at Politecnico di Milano. Backend, data and AI-powered apps. Looking for an internship in Milan.",
-    ogTagline: "Software engineering in Málaga and Milan. Backend, data and AI-powered apps.",
+      "Software engineering student between Málaga and Milan. Exploring backend, data and AI through personal projects. Looking for a development internship in Milan.",
+    ogTagline: "Software, data & new ideas. From Málaga to Milan.",
     keywords: [
-      "Nicolás Schioppa",
-      "software engineering",
-      "junior developer",
-      "internship Milan",
-      "Politecnico di Milano",
-      "University of Málaga",
-      "Erasmus",
-      "backend",
-      "TypeScript",
-      "Java",
-      "Python",
-      "PostgreSQL",
-      "artificial intelligence",
+      "Nicolás Schioppa", "software engineering", "junior developer",
+      "internship Milan", "Politecnico di Milano", "University of Málaga",
+      "backend", "Java", "Python", "TypeScript", "PostgreSQL",
     ],
-    ogImageAlt:
-      "Nicolás Schioppa — software engineering student in Milan.",
+    ogImageAlt: "Nicolás Schioppa · Software engineering student in Milan.",
   },
 
   nav: {
-    // Los anclas son los mismos en los dos idiomas (SECTION_IDS).
     items: [
-      { label: "About", href: "#about" },
       { label: "Projects", href: "#projects" },
-      { label: "Hackathons", href: "#hackathons" },
+      { label: "About", href: "#about" },
       { label: "Education", href: "#education" },
       { label: "Contact", href: "#contact" },
     ],
@@ -49,79 +28,52 @@ export const en: Content = {
   },
 
   hero: {
-    location: "Milan, Italy — on exchange",
+    location: "Milan, Italy · Open to internships",
     name: "Nicolás Schioppa",
-    roleLead: "Software engineering student",
-    roleAccent: "Backend, data and AI-powered apps",
+    roleLead: "Software with purpose.",
+    roleAccent: "Backend, data & AI.",
     bio: [
-      "I'm studying Software Engineering at the University of Málaga, and I'm spending this semester at Politecnico di Milano. I'm looking for an internship or a first development role in Milan.",
-      "What interests me is the part nobody sees: how the data is modelled, how an architecture holds up as a project grows, and what it takes to carry something from an idea to a thing that actually works.",
-      "Away from the keyboard I've raced sailing dinghies since I was a kid. That's where the habit of preparing properly and finishing what I start comes from.",
+      "I study Software Engineering in Málaga and I'm spending this year at Politecnico di Milano. I like understanding how things work and turning ideas into projects. I'm looking for a development internship in Milan.",
     ],
-    ctaPrimary: { label: "Get in touch", href: "#contact" },
-    ctaSecondary: {
-      label: "GitHub",
-      href: "https://github.com/nschioppa",
-      external: true,
-    },
-    scrollHint: "Scroll",
+    ctaPrimary: { label: "Explore my projects", href: "#projects" },
+    ctaSecondary: { label: "Get in touch", href: "#contact" },
+    scrollHint: "Keep exploring",
   },
 
   about: {
     eyebrow: "About",
-    heading: "How I work",
+    heading: "Curiosity beyond the code.",
     paragraphs: [
-      "I was born in Argentina, I hold Italian citizenship, and I've studied in Spain for years. Since September I've been in Milan, on exchange at the Politecnico.",
-      "Java is the language I know best: it's the language I study with and the one I compete with at hackathons, where the code is written by hand and against the clock. On my own projects I work differently — I lean on AI to write, and my part is deciding the architecture, reviewing what comes out, and signing off on nothing I don't understand. Both matter, and they aren't the same skill.",
-      "I start things I don't yet know how to do. P2P Sail began before I'd touched a database in earnest, and the voice assistant before I'd ever written a service that runs on its own in the background. Learning as I go is part of the method, not an accident.",
+      "I'm from Argentina, hold Italian citizenship and call Málaga home. Right now, I'm studying in Milan. I'm drawn to backend development: organizing data, thinking through architecture and understanding what makes a project work.",
+      "Java is my strongest language. My own projects also give me room to explore Python and AI tools, reviewing the code and learning from each decision. Away from the screen, I've raced sailing dinghies since childhood and spent four summers teaching people to sail.",
     ],
     facts: [
-      { label: "Right now", value: "Milan, Italy — on exchange until Feb 2027" },
-      { label: "Based in", value: "Málaga, Spain" },
+      { label: "Currently", value: "Milan · On exchange until July 2027" },
       { label: "EU work rights", value: "Italian citizenship" },
+      { label: "Languages", value: "Native Spanish · English B2 · Italian A1" },
       {
-        label: "Languages",
-        value: "Spanish (native) · English B2 Cambridge · Italian A1",
+        label: "On the water",
+        value: "Sailing instructor at El Candado, Málaga · 2023–2026",
       },
-      {
-        label: "Experience",
-        value:
-          "Sailing instructor at Real Club El Candado, Málaga — summers 2023 to 2026",
-      },
-      { label: "Looking for", value: "An extracurricular internship or a junior role" },
-      { label: "Availability", value: "Immediately, around class hours" },
     ],
   },
 
   projects: {
-    eyebrow: "Projects",
-    heading: "What I've worked on",
-    intro:
-      "Three things: two on my own, and one in forty-eight hours at a hackathon. Of the first, what exists so far is the design; the other two are written.",
+    eyebrow: "Selected projects",
+    heading: "Learning by building.",
+    intro: "A voice assistant, a financial model and an idea inspired by sailing.",
     items: [
-      {
-        id: "p2p-sail",
-        name: "P2P Sail",
-        status: { label: "On hold", tone: "exploring" },
-        summary:
-          "A marketplace for buying and selling second-hand sailing gear: sails, hulls, masts, fittings.",
-        contribution:
-          "I started it with almost no web or database experience, so the project became the course. What exists today is the business model, the domain model and the database schema; the application itself does not. Modelling before coding was a decision, not a delay: the schema already separates product families with their own validated attributes, and that is what later decides what can be searched and filtered.",
-        tags: ["Data modelling", "PostgreSQL", "Prisma", "Zod", "TypeScript", "Next.js"],
-        links: [],
-      },
       {
         id: "voice-assistant",
         name: "Local voice assistant",
-        status: { label: "Live", tone: "live" },
-        summary:
-          "A voice assistant that runs entirely on my Linux machine: I speak to it, it listens, and it answers out loud.",
+        status: { label: "Working", tone: "live" },
+        summary: "A Linux assistant you can speak to and hear answers from.",
         contribution:
-          "No audio leaves the machine — transcription and speech synthesis are local models, and only the language-model query travels over the network. I built the whole thing with AI assistance, which is also where I learned to review code I hadn't typed line by line.",
-        tags: ["Python", "Claude Agent SDK", "ONNX", "systemd", "Piper TTS", "Linux"],
+          "I integrated local speech recognition and synthesis: audio stays on the computer, while only the text query goes to the language model. Built with AI assistance and code review.",
+        tags: ["Python", "Claude Agent SDK", "ONNX", "Linux"],
         links: [
           {
-            label: "GitHub",
+            label: "View code",
             href: "https://github.com/nschioppa/voice-assistant",
             external: true,
           },
@@ -129,13 +81,22 @@ export const en: Content = {
       },
       {
         id: "fintech-model",
-        name: "Multi-asset allocation model",
-        status: { label: "3rd place", tone: "done" },
-        summary:
-          "A model that decides how to split a portfolio across equities and crypto, and when to move into cash instead.",
+        name: "Multi-asset investment model",
+        status: { label: "3rd place · UMA FinTech", tone: "done" },
+        summary: "A model for allocating a portfolio across stocks, cryptocurrency and cash.",
         contribution:
-          "Built by three of us at the UMA FinTech Chair hackathon in March 2026, where we came third. I designed the tactic: when to enter, when to stay out, and having the model's response grow logarithmically rather than linearly. No machine learning — the decision comes from rules you can read and argue with, which over forty-eight hours is an advantage rather than a limitation.",
+          "Built in a team of three during a 48-hour hackathon. I designed the entry and exit rules and a logarithmic response to adjust the allocation.",
         tags: ["Python", "Decision rules", "Fintech", "Teamwork"],
+        links: [],
+      },
+      {
+        id: "p2p-sail",
+        name: "P2P Sail",
+        status: { label: "Design · On hold", tone: "exploring" },
+        summary: "A marketplace concept for giving used sailing equipment a second life.",
+        contribution:
+          "I defined the business model, domain and database schema, including specific attributes for each product family. The application is yet to be developed.",
+        tags: ["Product design", "Data modeling", "PostgreSQL", "Prisma"],
         links: [],
       },
     ],
@@ -143,81 +104,70 @@ export const en: Content = {
 
   hackathons: {
     eyebrow: "Hackathons",
-    heading: "Building against the clock",
-    intro:
-      "Four competitions against the clock, in a team and usually with people I'd only just met: some of them are about building a product, others about finding an algorithm. It's the closest thing to a real sprint I've found outside a job.",
-    // En orden inverso, de lo mas reciente a lo mas antiguo.
+    heading: "Ideas, teamwork and a ticking clock.",
+    intro: "Four opportunities to solve problems, learn with others and test ideas under pressure.",
     items: [
       {
         id: "espet-up",
         name: "Espet-Up",
         event: "Málaga",
         period: "July 2026",
-        description:
-          "Turning real problems of the city — housing, mobility, tourism, local commerce — into proposals with a business model behind them.",
+        description: "Business proposals tackling housing, mobility, tourism and local commerce.",
       },
       {
         id: "ada-byron",
         name: "Ada Byron contest",
-        event: "UMA and other Andalusian public universities",
+        event: "Andalusian public universities",
         period: "April 2026",
-        description:
-          "The Andalusian round of the national university programming contest, in teams of three. Algorithm problems solved in Java against the clock: no framework helps here — either you find the algorithm or you don't.",
+        description: "Solving algorithm problems in Java, working in teams of three.",
       },
       {
         id: "catedra-fintech",
-        name: "UMA FinTech Chair hackathon",
+        name: "UMA FinTech",
         event: "Hackers Week · University of Málaga",
         period: "March 2026",
-        result: "3rd place",
-        description:
-          "The multi-asset allocation model listed above, under projects.",
+        result: "Third place",
+        description: "A multi-asset allocation model built in 48 hours.",
       },
       {
         id: "malackathon",
         name: "Malackathon",
-        event: "School of Computer Science · University of Málaga",
+        event: "School of Computer Science · UMA",
         period: "October 2024",
-        description:
-          "A program for checking the state of Spain's reservoirs — how much water each one holds, and which is the nearest.",
+        description: "A tool to check reservoir water levels and find the nearest reservoir.",
       },
     ],
   },
 
   education: {
-    eyebrow: "Education",
-    heading: "Studies and tools",
+    eyebrow: "Education & tools",
+    heading: "From Málaga to Milan.",
     studies: [
       {
         institution: "Politecnico di Milano",
-        degree: "Erasmus exchange — Software Engineering",
-        period: "Sep 2026 — Feb 2027",
-        note: "Possibly extended to July 2027; not confirmed yet.",
+        degree: "Erasmus exchange · Software Engineering",
+        period: "Sep 2026 – Jul 2027",
         current: true,
       },
       {
         institution: "University of Málaga",
         degree: "BSc in Software Engineering",
-        period: "2023 — present",
+        period: "2023 – present",
         note: "More than 50% of credits completed.",
         current: true,
       },
     ],
     skills: [
-      {
-        label: "Languages",
-        items: ["Java", "Scala 3", "Python", "SQL", "C", "C++", "TypeScript"],
-      },
+      { label: "Languages", items: ["Java", "Python", "SQL", "TypeScript", "Scala 3", "C", "C++"] },
       { label: "Tools", items: ["Git", "Linux", "PostgreSQL"] },
-      { label: "Certifications", items: ["Cambridge English B2"] },
+      { label: "Certification", items: ["Cambridge English B2"] },
     ],
   },
 
   contact: {
     eyebrow: "Contact",
-    heading: "Let's work together",
-    blurb:
-      "I'm in Milan until February 2027, possibly through to July, and I'm looking for an internship or a junior developer role. I reply to every email.",
+    heading: "Good ideas start with a conversation.",
+    blurb: "I'm looking for an internship or a first development role in Milan alongside my studies. If you think we could work well together, I'd love to hear from you.",
     email: "nicoschioppa@gmail.com",
     phone: "+34 601 503 339",
     copyLabel: "Copy",
@@ -235,7 +185,7 @@ export const en: Content = {
 
   footer: {
     rights: "© 2026 Nicolás Schioppa",
-    builtWith: "Built with Next.js and TypeScript.",
-    coordinates: "45°28′N 9°11′E",
+    builtWith: "Made with curiosity, Next.js and TypeScript.",
+    coordinates: "45°28′N 9°11′E · Milan",
   },
 };

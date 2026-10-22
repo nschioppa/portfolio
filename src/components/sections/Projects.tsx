@@ -1,137 +1,96 @@
 import { Badge } from "@/components/ui/Badge";
-import { Card } from "@/components/ui/Card";
 import { ExternalLink } from "@/components/ui/ExternalLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { StatusDot } from "@/components/ui/StatusDot";
 import { SECTION_IDS, type Link, type ProjectsContent } from "@/content/types";
 
-/**
- * Seccion de proyectos.
- *
- * Una sola columna a ancho completo, no una rejilla: son cuatro fichas con
- * parrafo largo, y en dos columnas el texto se queda en ~34ch, la mitad del
- * ancho de lectura comodo. Apiladas, cada `contribution` cabe en `max-w-measure`.
- *
- * Componente de servidor: la animacion de entrada la pone `Reveal`, que ya es
- * cliente por dentro.
- */
-
-/** Marca de un pendiente: una casilla sin marcar, dibujada, no escrita. */
-function TodoMark() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 12 12"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.25"
-      strokeLinejoin="round"
-      // 2px de margen: (16px de linea de `text-micro` - 12px del icono) / 2,
-      // que es lo que lo centra con la primera linea del texto.
-      className="mt-[2px] size-3 shrink-0"
-    >
-      <rect x="1.5" y="1.5" width="9" height="9" rx="2" />
-    </svg>
-  );
-}
-
-/**
- * Un enlace de proyecto.
- *
- * Un `href` de "#" es un hueco de contenido, no un destino: se pinta como texto
- * apagado y NO como <a>, para que no aparezca en el orden de tabulacion ni
- * prometa una navegacion que no existe.
- */
 function ProjectLink({ link }: { link: Link }) {
-  if (link.href === "#") {
-    return <span className="text-faint">{link.label}</span>;
-  }
+  if (!link.href || link.href === "#") return null;
 
   if (link.external) {
-    return <ExternalLink href={link.href}>{link.label}</ExternalLink>;
+    return <ExternalLink href={link.href} className="min-h-11 font-medium">{link.label}</ExternalLink>;
   }
 
   return (
-    <a
-      href={link.href}
-      className="link-underline text-ink transition-colors duration-200 ease-out-soft hover:text-accent motion-reduce:transition-none"
-    >
+    <a href={link.href} className="link-underline inline-flex min-h-11 items-center font-medium text-ink hover:text-accent">
       {link.label}
     </a>
   );
 }
 
+/** Decorative studies of each project's subject, rather than product screenshots. */
+function ProjectIllustration({ id }: { id: string }) {
+  return (
+    <div aria-hidden="true" className="relative flex h-44 items-center justify-center overflow-hidden rounded-[2px] border border-line bg-surface md:h-full md:min-h-60">
+      <svg viewBox="0 0 400 260" fill="none" className="h-full w-full text-accent" focusable="false">
+        <path d="M0 65H400M0 130H400M0 195H400M100 0V260M200 0V260M300 0V260" stroke="currentColor" opacity=".09" />
+        {id === "p2p-sail" ? (
+          <>
+            <circle cx="200" cy="128" r="91" stroke="currentColor" strokeDasharray="2 7" opacity=".28" />
+            <path d="M207 46V180L130 180L207 46Z" fill="currentColor" opacity=".82" />
+            <path d="M220 73V180H276L220 73Z" fill="currentColor" opacity=".22" />
+            <path d="M119 193H285L270 207H137L119 193Z" fill="currentColor" />
+            <path d="M92 224C110 215 129 233 147 224C165 215 184 233 202 224C220 215 239 233 257 224C275 215 294 233 312 224" stroke="currentColor" opacity=".4" />
+          </>
+        ) : id === "voice-assistant" ? (
+          <>
+            <circle cx="200" cy="130" r="87" stroke="currentColor" opacity=".15" />
+            <circle cx="200" cy="130" r="108" stroke="currentColor" strokeDasharray="2 9" opacity=".23" />
+            {[24, 45, 72, 48, 111, 150, 91, 126, 66, 36, 56, 24].map((height, index) => (
+              <rect key={index} x={102 + index * 17} y={130 - height / 2} width="5" height={height} rx="2.5" fill="currentColor" opacity={index > 3 && index < 8 ? ".9" : ".38"} />
+            ))}
+            <circle cx="200" cy="130" r="5" fill="var(--color-base)" />
+          </>
+        ) : (
+          <>
+            <path d="M77 66V204H327" stroke="currentColor" opacity=".25" />
+            <path d="M102 175V204M145 145V204M188 167V204M231 114V204M274 94V204M317 63V204" stroke="currentColor" strokeWidth="15" opacity=".12" />
+            <path d="M93 164C117 164 125 129 148 129C172 129 173 155 197 149C222 143 229 98 255 101C279 104 297 67 318 64" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="318" cy="64" r="5" fill="currentColor" />
+            <circle cx="318" cy="64" r="13" stroke="currentColor" opacity=".4" />
+          </>
+        )}
+        <path d="M20 20H32M26 14V26M368 240H380M374 234V246" stroke="currentColor" opacity=".4" />
+      </svg>
+    </div>
+  );
+}
+
 export function Projects({ content }: { content: ProjectsContent }) {
   return (
-    <Section
-      id={SECTION_IDS.projects}
-      eyebrow={content.eyebrow}
-      heading={content.heading}
-      intro={content.intro}
-      tone="base"
-    >
-      <ul className="flex flex-col gap-6 md:gap-8">
-        {content.items.map((project, i) => (
-          <Reveal as="li" key={project.id} delay={i * 80}>
-            <Card as="article" className="gap-5">
-              {/* En movil el estado cae debajo del nombre; a partir de `sm`
-                  vuelve a la derecha, alineado por la linea de base del h3. */}
-              <header className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                <h3 id={project.id} className="text-title font-semibold text-ink">
+    <Section id={SECTION_IDS.projects} eyebrow={content.eyebrow} heading={content.heading} intro={content.intro}>
+      <ol>
+        {content.items.map((project, index) => (
+          <Reveal as="li" key={project.id} delay={index * 60} className="border-t border-line py-8 first:pt-8 md:py-11">
+            <article aria-labelledby={project.id} className="grid gap-6 md:grid-cols-[minmax(0,.78fr)_minmax(0,1.22fr)] md:gap-10 lg:gap-16">
+              <ProjectIllustration id={project.id} />
+              <div className="min-w-0">
+                <div className="mb-4 flex items-center justify-between gap-4">
+                  <span aria-hidden="true" className="font-mono text-micro tracking-[.14em] text-faint">{String(index + 1).padStart(2, "0")}</span>
+                  <p className="flex items-center gap-2 text-micro text-muted">
+                    <StatusDot tone={project.status.tone} />
+                    {project.status.label}
+                  </p>
+                </div>
+                <h3 id={project.id} className="font-serif text-[clamp(1.6rem,2.5vw,2.15rem)] leading-tight tracking-[-.025em] text-ink">
                   {project.name}
                 </h3>
-
-                <p className="flex shrink-0 items-center gap-2">
-                  <StatusDot tone={project.status.tone} label={project.status.label} />
-                  {/* El punto ya lleva la etiqueta como `aria-label`: aqui se
-                      oculta al lector para no anunciar el estado dos veces. */}
-                  <span aria-hidden="true" className="mono-label uppercase">
-                    {project.status.label}
-                  </span>
-                </p>
-              </header>
-
-              <p className="max-w-measure text-lead text-muted">{project.summary}</p>
-
-              {/* La aportacion es lo que de verdad se lee: se separa del resumen
-                  con una driza de acento y subiendo el texto a `ink`. */}
-              <p className="max-w-measure border-l-2 border-accent/70 pl-4 text-body text-ink md:pl-5">
-                {project.contribution}
-              </p>
-
-              <ul className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <li key={tag}>
-                    <Badge>{tag}</Badge>
-                  </li>
-                ))}
-              </ul>
-
-              {project.links.length > 0 ? (
-                <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-small">
-                  {project.links.map((link) => (
-                    <li key={link.label}>
-                      <ProjectLink link={link} />
-                    </li>
-                  ))}
+                <p className="mt-3 max-w-measure text-body text-ink">{project.summary}</p>
+                <p className="mt-3 max-w-measure text-small text-muted">{project.contribution}</p>
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => <li key={tag}><Badge>{tag}</Badge></li>)}
                 </ul>
-              ) : null}
-
-              {project.todos && project.todos.length > 0 ? (
-                <ul className="flex flex-col gap-1.5 border-t border-line pt-4 text-micro text-faint">
-                  {project.todos.map((todo) => (
-                    <li key={todo} className="flex items-start gap-2">
-                      <TodoMark />
-                      <span>{todo}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </Card>
+                {project.links.some((link) => link.href && link.href !== "#") ? (
+                  <ul className="mt-3 flex flex-wrap gap-x-6 text-small">
+                    {project.links.map((link) => <li key={link.label}><ProjectLink link={link} /></li>)}
+                  </ul>
+                ) : null}
+              </div>
+            </article>
           </Reveal>
         ))}
-      </ul>
+      </ol>
     </Section>
   );
 }

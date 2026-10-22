@@ -154,13 +154,8 @@ export interface ContactContent {
   eyebrow: string;
   heading: string;
   blurb: string;
-  email: string;
-  phone: string;
-  /** Etiquetas del boton de copiar y de su estado despues de copiar. */
-  copyLabel: string;
-  copiedLabel: string;
-  phoneLabel: string;
-  links: Link[];
+  /** El primer enlace es el contacto principal; los demas son secundarios. */
+  links: [Link, ...Link[]];
   /** Cosas pendientes. Se pintan visibles y en gris para que no se olviden. */
   todos?: string[];
 }

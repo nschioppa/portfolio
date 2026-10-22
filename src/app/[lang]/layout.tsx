@@ -32,12 +32,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: meta.title,
     description: meta.description,
     keywords: meta.keywords,
+    applicationName: AUTHOR,
     authors: [{ name: AUTHOR, url: SITE_URL }],
     creator: AUTHOR,
     alternates: {
       canonical: url,
-      // hreflang: le dice a Google que /es y /en son la misma pagina en otro
-      // idioma. Sin esto compiten entre si y solo indexa una.
+      // Relaciona las versiones traducidas para mostrar el idioma adecuado.
       languages: {
         es: `${SITE_URL}/es`,
         en: `${SITE_URL}/en`,
@@ -58,7 +58,16 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       title: meta.title,
       description: meta.description,
     },
-    robots: { index: true, follow: true },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
   };
 }
 

@@ -2,9 +2,9 @@ import type { Content } from "./types";
 
 export const en: Content = {
   meta: {
-    title: "Nicolás Schioppa · Software, data & new ideas",
+    title: "Nicolás Schioppa | Software Engineering",
     description:
-      "Software engineering student between Málaga and Milan. Exploring backend, data and AI through personal projects. Looking for a development internship in Milan.",
+      "Software engineering student at the University of Málaga and Politecnico di Milano. Explore my backend, data and AI projects. Open to internships in Milan.",
     ogTagline: "Software, data & new ideas. From Málaga to Milan.",
     keywords: [
       "Nicolás Schioppa", "software engineering", "junior developer",

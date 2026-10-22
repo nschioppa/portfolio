@@ -185,19 +185,14 @@ export const es: Content = {
   contact: {
     eyebrow: "Contacto",
     heading: "La próxima idea empieza hablando.",
-    blurb: "Busco prácticas o un primer puesto de desarrollo en Milán, compatible con mis estudios. Si creés que podemos trabajar juntos, escribime.",
-    email: "nicoschioppa@gmail.com",
-    phone: "+34 601 503 339",
-    copyLabel: "Copiar",
-    copiedLabel: "Copiado",
-    phoneLabel: "Teléfono",
+    blurb: "Busco prácticas o un primer puesto de desarrollo en Milán, compatible con mis estudios. Si creés que podemos trabajar juntos, hablemos por LinkedIn.",
     links: [
-      { label: "GitHub", href: "https://github.com/nschioppa", external: true },
       {
-        label: "LinkedIn",
+        label: "Escribime por LinkedIn",
         href: "https://www.linkedin.com/in/nicolas-schioppa-4808a2297/",
         external: true,
       },
+      { label: "GitHub", href: "https://github.com/nschioppa", external: true },
     ],
   },
 

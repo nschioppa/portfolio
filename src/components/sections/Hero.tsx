@@ -30,7 +30,7 @@ export function Hero({ content }: { content: HeroContent }) {
               {content.location}
             </p>
             <h1 id="hero-title" className="mt-7 font-serif text-hero font-normal md:mt-8">
-              <span className="block">{firstName}</span>
+              <span className="block">{firstName}{" "}</span>
               <span className="block font-normal italic text-accent">{lastName.join(" ")}</span>
             </h1>
             <p className="mt-7 text-title font-medium tracking-tight">{content.roleLead}</p>

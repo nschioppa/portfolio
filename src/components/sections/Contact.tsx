@@ -11,7 +11,7 @@ export function Contact({ content }: { content: ContactContent }) {
     <Section id={SECTION_IDS.contact} eyebrow={content.eyebrow} heading={content.heading} className="contact-section overflow-hidden">
       <Reveal>
         <p className="max-w-measure text-lead text-muted">{content.blurb}</p>
-        <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-line pb-7 md:mt-10 md:pb-10">
+        <div data-nosnippet className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-line pb-7 md:mt-10 md:pb-10">
           <a href={`mailto:${content.email}`} className="group inline-flex min-h-11 max-w-full items-center gap-4 text-[clamp(1.05rem,4vw,2.6rem)] tracking-[-.035em] text-ink transition-colors hover:text-accent motion-reduce:transition-none">
             <span className="min-w-0 break-all">{content.email}</span>
             <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.4" className="size-5 shrink-0 sm:size-8">
@@ -21,7 +21,7 @@ export function Contact({ content }: { content: ContactContent }) {
           <CopyButton value={content.email} copyLabel={content.copyLabel} copiedLabel={content.copiedLabel} />
         </div>
         <div className="mt-7 flex flex-col justify-between gap-7 sm:flex-row sm:flex-wrap sm:items-center">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div data-nosnippet className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <span className="font-mono text-micro uppercase tracking-[.1em] text-faint">{content.phoneLabel}</span>
             <a href={`tel:${content.phone.replace(/\s/g, "")}`} className="inline-flex min-h-11 items-center text-small text-muted transition-colors hover:text-ink motion-reduce:transition-none">{content.phone}</a>
             <CopyButton value={content.phone} copyLabel={content.copyLabel} copiedLabel={content.copiedLabel} />

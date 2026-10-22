@@ -37,7 +37,7 @@ export default async function OpengraphImage({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#0a0e14",
+          background: "#f7f5ef",
           padding: "72px 80px",
           position: "relative",
         }}
@@ -55,7 +55,7 @@ export default async function OpengraphImage({
               width: 620 + i * 180,
               height: 620 + i * 180,
               borderRadius: "50%",
-              border: "2px solid #5cc8f2",
+              border: "2px solid #24685f",
               opacity: 0.14 - i * 0.035,
             }}
           />
@@ -65,7 +65,7 @@ export default async function OpengraphImage({
           <div
             style={{
               fontSize: 26,
-              color: "#5cc8f2",
+              color: "#24685f",
               letterSpacing: 3,
               textTransform: "uppercase",
             }}
@@ -78,7 +78,7 @@ export default async function OpengraphImage({
           <div
             style={{
               fontSize: 92,
-              color: "#f2f5f8",
+              color: "#15343d",
               lineHeight: 1.05,
               letterSpacing: -2,
             }}
@@ -89,17 +89,17 @@ export default async function OpengraphImage({
             style={{
               width: 96,
               height: 3,
-              background: "#5cc8f2",
+              background: "#24685f",
               margin: "30px 0",
             }}
           />
-          <div style={{ fontSize: 38, color: "#aab6c4", lineHeight: 1.3, maxWidth: 820 }}>
+          <div style={{ fontSize: 38, color: "#52666a", lineHeight: 1.3, maxWidth: 820 }}>
             {meta.ogTagline}
           </div>
         </div>
 
-        <div style={{ display: "flex", fontSize: 26, color: "#7d8b9b" }}>
-          github.com/nschioppa
+        <div style={{ display: "flex", fontSize: 26, color: "#52666a" }}>
+          nicoschioppa.com
         </div>
       </div>
     ),

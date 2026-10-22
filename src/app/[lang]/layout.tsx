@@ -1,21 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { LANGS, DEFAULT_LANG, type Lang } from "@/content/types";
 import { getContent, isLang } from "@/content";
 import { SITE_URL, AUTHOR } from "@/lib/site";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 /** Las dos paginas se generan en build. No hay nada dinamico. */
 export function generateStaticParams() {
@@ -82,7 +69,7 @@ export default async function LangLayout({
   const lang = toLang((await params).lang);
 
   return (
-    <html lang={lang} className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang={lang}>
       <body>{children}</body>
     </html>
   );

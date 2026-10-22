@@ -17,7 +17,8 @@ Si el entorno restringe las conexiones entre procesos de Turbopack, se puede com
 
 - Todos los textos están en `src/content/es.ts` y `en.ts`, con un contrato común en `types.ts`.
 - El sistema visual está en `src/app/globals.css`: marfil, azul marino, verde mar y tipografía del sistema sin descargas de fuentes.
-- `SailingIllustration.tsx` contiene la ilustración SVG original del inicio.
+- `SoftwareChart.tsx` combina un esquema de software con una vela geométrica en el inicio.
+- La sección personal usa una fotografía de Nicolás navegando, optimizada como WebP y con carga diferida.
 - `VoyageProgress.tsx` dibuja una ruta decorativa que avanza con el scroll en escritorio.
 - Las entradas de secciones se activan al aparecer en pantalla. El contenido sigue visible sin JavaScript y las animaciones respetan la preferencia de movimiento reducido.
 - La navegación móvil tiene cierre con Escape y clic fuera. El cambio de idioma conserva la sección visible.

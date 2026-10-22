@@ -123,25 +123,8 @@
   --color-surface-3: #20454f;
   background: #102c36;
 }
-.hero-art { isolation: isolate; }
-.hero-art svg { display: block; width: 100%; height: auto; }
-.sea-line { transform-origin: center; }
-@media (prefers-reduced-motion: no-preference) {
-  .hero-sailboat { animation: boat-drift 7s ease-in-out infinite; transform-origin: 275px 320px; }
-  .sea-line { animation: sea-drift 9s ease-in-out infinite alternate; }
-  .sea-line:nth-child(even) { animation-delay: -4s; }
-  .chart-route { stroke-dasharray: 5 9; animation: route-flow 25s linear infinite; }
-  @supports (animation-timeline: view()) {
-    .hero-art { animation: chart-sail linear both; animation-timeline: view(); animation-range: exit 0% exit 90%; }
-  }
-}
-@keyframes boat-drift {
-  0%,100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-7px) rotate(1deg); }
-}
-@keyframes sea-drift { from { transform: translateX(-5px); } to { transform: translateX(5px); } }
-@keyframes route-flow { to { stroke-dashoffset: -140; } }
-@keyframes chart-sail { to { transform: translateY(65px) rotate(3deg); } }
+.sailing-photo { background: #102c36; }
+.sailing-photo img { filter: grayscale(1) contrast(1.08); mix-blend-mode: luminosity; opacity: .92; }
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after { animation: none !important; scroll-behavior: auto !important; transition-duration: 0s !important; }
 }

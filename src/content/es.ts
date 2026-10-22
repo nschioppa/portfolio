@@ -30,14 +30,24 @@ export const es: Content = {
   hero: {
     location: "Milán, Italia · Disponible para prácticas",
     name: "Nicolás Schioppa",
-    roleLead: "Software con propósito.",
+    roleLead: "Ingeniería del Software.",
     roleAccent: "Backend, datos e IA.",
     bio: [
-      "Estudio Ingeniería del Software en Málaga y este curso estoy en el Politecnico di Milano. Me gusta entender cómo funcionan las cosas y convertir ideas en proyectos. Busco prácticas de desarrollo en Milán.",
+      "Estudio en la Universidad de Málaga y este curso estoy en el Politecnico di Milano. Me interesa construir software, entender sus decisiones y aprender con cada proyecto. Busco prácticas de desarrollo en Milán.",
     ],
     ctaPrimary: { label: "Ver proyectos", href: "#projects" },
     ctaSecondary: { label: "Hablemos", href: "#contact" },
     scrollHint: "Seguí explorando",
+    chart: {
+      eyebrow: "Arquitectura de software",
+      app: "Aplicación",
+      appDetail: "Interfaz",
+      api: "API",
+      apiDetail: "Lógica",
+      data: "Datos",
+      dataDetail: "Persistencia",
+      caption: "De la interfaz a los datos.",
+    },
   },
 
   about: {
@@ -45,7 +55,7 @@ export const es: Content = {
     heading: "Curiosidad dentro y fuera del código.",
     paragraphs: [
       "Soy argentino, con ciudadanía italiana y base en Málaga. Ahora estudio en Milán. Me interesa el backend: organizar los datos, pensar una arquitectura y entender las decisiones que hacen que un proyecto funcione.",
-      "Java es mi lenguaje más sólido. En mis proyectos también exploro Python y herramientas de IA, revisando el código y aprendiendo de cada decisión. Fuera de la pantalla compito en vela desde chico y he pasado cuatro veranos enseñando a navegar.",
+      "Java es mi lenguaje más sólido. En mis proyectos también exploro Python y herramientas de IA, revisando el código y aprendiendo de cada decisión.",
     ],
     facts: [
       { label: "Ahora", value: "Milán · Erasmus hasta julio de 2027" },
@@ -56,6 +66,13 @@ export const es: Content = {
         value: "Monitor de vela en El Candado, Málaga · 2023–2026",
       },
     ],
+    photo: {
+      alt: "Nicolás Schioppa navegando en un velero de competición, entre salpicaduras.",
+      eyebrow: "Fuera de la pantalla",
+      title: "También en el agua.",
+      body: "Compito en vela desde chico y pasé cuatro veranos enseñando a navegar en El Candado. La concentración, las decisiones y el trabajo en equipo también forman parte de lo que me gusta del deporte.",
+      caption: "Vela de competición · Nicolás Schioppa",
+    },
   },
 
   projects: {
@@ -112,6 +129,7 @@ export const es: Content = {
         name: "Espet-Up",
         event: "Málaga",
         period: "Julio 2026",
+        result: "Tercer puesto",
         description: "Propuestas de negocio para retos de vivienda, movilidad, turismo y comercio local.",
       },
       {

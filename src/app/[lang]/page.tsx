@@ -9,6 +9,7 @@ import { Education } from "@/components/sections/Education";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { VoyageProgress } from "@/components/ui/VoyageProgress";
+import { getStructuredData } from "@/lib/structured-data";
 
 export default async function Page({
   params,
@@ -21,6 +22,12 @@ export default async function Page({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getStructuredData(content, lang)).replace(/</g, "\\u003c"),
+        }}
+      />
       <Nav content={content.nav} lang={lang} />
       <main id="main">
         <Hero content={content.hero} />

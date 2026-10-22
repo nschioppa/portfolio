@@ -3,16 +3,12 @@
  */
 
 /**
- * URL canonica. En Vercel se resuelve sola:
- *   - produccion con dominio propio -> define NEXT_PUBLIC_SITE_URL en el panel
- *   - despliegues de preview        -> VERCEL_URL, que Vercel inyecta
- *   - local                         -> localhost
- * Hace falta absoluta para las etiquetas Open Graph: un og:image relativo no
- * lo resuelve ni LinkedIn ni WhatsApp.
+ * Dominio publico para canonicals, sitemap y datos estructurados, incluso en
+ * previews. NEXT_PUBLIC_SITE_URL permite sustituirlo al cambiar de dominio.
+ * Open Graph tambien necesita una URL absoluta.
  */
 export const SITE_URL: string =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://nicoschioppa.com";
+  (process.env.NEXT_PUBLIC_SITE_URL ?? "https://nicoschioppa.com").replace(/\/+$/, "");
 
 export const AUTHOR = "Nicolás Schioppa";
 

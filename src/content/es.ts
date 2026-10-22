@@ -2,9 +2,9 @@ import type { Content } from "./types";
 
 export const es: Content = {
   meta: {
-    title: "Nicolás Schioppa · Software, datos y nuevas ideas",
+    title: "Nicolás Schioppa | Ingeniería del Software",
     description:
-      "Estudiante de Ingeniería del Software entre Málaga y Milán. Proyectos de backend, datos e IA. Busco prácticas de desarrollo en Milán.",
+      "Estudiante de Ingeniería del Software en la UMA y el Politecnico di Milano. Proyectos de backend, datos e IA con Java y Python. Busco prácticas en Milán.",
     ogTagline: "Software, datos y nuevas ideas. De Málaga a Milán.",
     keywords: [
       "Nicolás Schioppa", "ingeniería del software", "desarrollador junior",

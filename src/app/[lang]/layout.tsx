@@ -33,6 +33,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     description: meta.description,
     keywords: meta.keywords,
     applicationName: AUTHOR,
+    icons: {
+      shortcut: "/favicon.ico",
+    },
     verification: {
       google: "mPOh3KgpnMZPCMiKyvS7OdgMOp2pXHI6uWquHqDi4QY",
     },

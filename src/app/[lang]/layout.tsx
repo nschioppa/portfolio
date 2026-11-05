@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "../globals.css";
 import { LANGS, DEFAULT_LANG, type Lang } from "@/content/types";
 import { getContent, isLang } from "@/content";
@@ -85,7 +87,11 @@ export default async function LangLayout({
 
   return (
     <html lang={lang}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

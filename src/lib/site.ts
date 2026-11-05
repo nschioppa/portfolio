@@ -11,5 +11,3 @@ export const SITE_URL: string =
   (process.env.NEXT_PUBLIC_SITE_URL ?? "https://nicoschioppa.com").replace(/\/+$/, "");
 
 export const AUTHOR = "Nicolás Schioppa";
-
-export const GITHUB_URL = "https://github.com/nschioppa";

@@ -4,13 +4,12 @@ import { LANGS, DEFAULT_LANG } from "@/content/types";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const dynamicParams = false;
 
-/** Sin esto Next deja la imagen como ruta dinamica y la genera en cada
- *  peticion. Son dos imagenes fijas: se hacen en build y se cachean. */
+/** Los Route Handlers necesitan sus propios parámetros para prerenderizar. */
 export function generateStaticParams() {
   return LANGS.map((lang) => ({ lang }));
 }
-export const alt = "Nicolás Schioppa — software engineering student and ILCA racing sailor";
 
 /**
  * Imagen social generada en build, una por idioma.

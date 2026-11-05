@@ -1,25 +1,32 @@
-# dependencias
-/node_modules
+# Dependencies
+/node_modules/
 /.pnp
 .pnp.*
 
-# build de next
+# Next.js builds
 /.next/
 /out/
-/build
+/build/
 next-env.d.ts
 
-# entorno
-.env
-.env*.local
+# Local environment and secrets
+.env*
+!.env.example
+!.env.sample
+*.pem
+*.key
 
-# vercel
-.vercel
+# Hosting
+.vercel/
 
-# typescript
+# TypeScript and tests
 *.tsbuildinfo
+/coverage/
 
-# sistema
+# OS, editors and logs
 .DS_Store
 Thumbs.db
 *.log
+.vscode/*
+!.vscode/extensions.json
+.idea/

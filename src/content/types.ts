@@ -23,7 +23,7 @@ export interface Link {
 }
 
 export interface NavContent {
-  /** El href es un ancla del tipo "#proyectos" (mismo id en los dos idiomas). */
+  /** El href es un ancla del tipo "#projects" (mismo id en los dos idiomas). */
   items: Link[];
   skipToContent: string;
   openMenu: string;
@@ -58,8 +58,6 @@ export interface HeroContent {
   ctaTertiary?: Link;
   scrollHint: string;
   chart: SoftwareChartContent;
-  /** Cosas pendientes. Se pintan visibles y en gris para que no se olviden. */
-  todos?: string[];
 }
 
 export interface Fact {
@@ -79,8 +77,6 @@ export interface AboutContent {
     body: string;
     caption: string;
   };
-  /** Cosas pendientes. Se pintan visibles y en gris para que no se olviden. */
-  todos?: string[];
 }
 
 export interface Project {
@@ -95,8 +91,6 @@ export interface Project {
   /** Stack y skills. Se pintan como badges. */
   tags: string[];
   links: Link[];
-  /** Cosas que faltan. Se renderizan visibles, en gris, para no olvidarlas. */
-  todos?: string[];
 }
 
 export interface ProjectsContent {
@@ -130,7 +124,6 @@ export interface Hackathon {
   /** El puesto, si lo hubo. Se pinta destacado: es lo que mira un recruiter. */
   result?: string;
   description: string;
-  todos?: string[];
 }
 
 export interface HackathonsContent {
@@ -138,7 +131,6 @@ export interface HackathonsContent {
   heading: string;
   intro?: string;
   items: Hackathon[];
-  todos?: string[];
 }
 
 export interface EducationContent {
@@ -146,8 +138,6 @@ export interface EducationContent {
   heading: string;
   studies: Study[];
   skills: SkillGroup[];
-  /** Cosas pendientes. Se pintan visibles y en gris para que no se olviden. */
-  todos?: string[];
 }
 
 export interface ContactContent {
@@ -156,8 +146,6 @@ export interface ContactContent {
   blurb: string;
   /** El primer enlace es el contacto principal; los demas son secundarios. */
   links: [Link, ...Link[]];
-  /** Cosas pendientes. Se pintan visibles y en gris para que no se olviden. */
-  todos?: string[];
 }
 
 export interface FooterContent {

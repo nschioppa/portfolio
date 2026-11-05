@@ -29,7 +29,7 @@ export default async function Page({
         }}
       />
       <Nav content={content.nav} lang={lang} />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <Hero content={content.hero} />
         <Projects content={content.projects} />
         <Hackathons content={content.hackathons} />

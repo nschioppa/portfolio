@@ -6,8 +6,6 @@ import { StatusDot } from "@/components/ui/StatusDot";
 import { SECTION_IDS, type Link, type ProjectsContent } from "@/content/types";
 
 function ProjectLink({ link }: { link: Link }) {
-  if (!link.href || link.href === "#") return null;
-
   if (link.external) {
     return <ExternalLink href={link.href} className="min-h-11 font-medium">{link.label}</ExternalLink>;
   }
@@ -61,35 +59,39 @@ export function Projects({ content }: { content: ProjectsContent }) {
   return (
     <Section id={SECTION_IDS.projects} eyebrow={content.eyebrow} heading={content.heading} intro={content.intro}>
       <ol>
-        {content.items.map((project, index) => (
-          <Reveal as="li" key={project.id} delay={index * 60} className="border-t border-line py-8 first:pt-8 md:py-11">
-            <article aria-labelledby={project.id} className="grid gap-6 md:grid-cols-[minmax(0,.78fr)_minmax(0,1.22fr)] md:gap-10 lg:gap-16">
-              <ProjectIllustration id={project.id} />
-              <div className="min-w-0">
-                <div className="mb-4 flex items-center justify-between gap-4">
-                  <span aria-hidden="true" className="font-mono text-micro tracking-[.14em] text-faint">{String(index + 1).padStart(2, "0")}</span>
-                  <p className="flex items-center gap-2 text-micro text-muted">
-                    <StatusDot tone={project.status.tone} />
-                    {project.status.label}
-                  </p>
-                </div>
-                <h3 id={project.id} className="font-serif text-[clamp(1.6rem,2.5vw,2.15rem)] leading-tight tracking-[-.025em] text-ink">
-                  {project.name}
-                </h3>
-                <p className="mt-3 max-w-measure text-body text-ink">{project.summary}</p>
-                <p className="mt-3 max-w-measure text-small text-muted">{project.contribution}</p>
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => <li key={tag}><Badge>{tag}</Badge></li>)}
-                </ul>
-                {project.links.some((link) => link.href && link.href !== "#") ? (
-                  <ul className="mt-3 flex flex-wrap gap-x-6 text-small">
-                    {project.links.map((link) => <li key={link.label}><ProjectLink link={link} /></li>)}
+        {content.items.map((project, index) => {
+          const links = project.links.filter((link) => link.href && link.href !== "#");
+
+          return (
+            <Reveal as="li" key={project.id} delay={index * 60} className="border-t border-line py-8 first:pt-8 md:py-11">
+              <article aria-labelledby={project.id} className="grid gap-6 md:grid-cols-[minmax(0,.78fr)_minmax(0,1.22fr)] md:gap-10 lg:gap-16">
+                <ProjectIllustration id={project.id} />
+                <div className="min-w-0">
+                  <div className="mb-4 flex items-center justify-between gap-4">
+                    <span aria-hidden="true" className="font-mono text-micro tracking-[.14em] text-faint">{String(index + 1).padStart(2, "0")}</span>
+                    <p className="flex items-center gap-2 text-micro text-muted">
+                      <StatusDot tone={project.status.tone} />
+                      {project.status.label}
+                    </p>
+                  </div>
+                  <h3 id={project.id} className="font-serif text-[clamp(1.6rem,2.5vw,2.15rem)] leading-tight tracking-[-.025em] text-ink">
+                    {project.name}
+                  </h3>
+                  <p className="mt-3 max-w-measure text-body text-ink">{project.summary}</p>
+                  <p className="mt-3 max-w-measure text-small text-muted">{project.contribution}</p>
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => <li key={tag}><Badge>{tag}</Badge></li>)}
                   </ul>
-                ) : null}
-              </div>
-            </article>
-          </Reveal>
-        ))}
+                  {links.length > 0 ? (
+                    <ul className="mt-3 flex flex-wrap gap-x-6 text-small">
+                      {links.map((link) => <li key={link.label}><ProjectLink link={link} /></li>)}
+                    </ul>
+                  ) : null}
+                </div>
+              </article>
+            </Reveal>
+          );
+        })}
       </ol>
     </Section>
   );

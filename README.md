@@ -73,6 +73,8 @@ The site has no contact form or application database. Public contact uses Linked
 
 Run `npm audit` when reviewing dependencies. If a credential is ever exposed, revoke or rotate it first. Removing a file from the current version does not remove it from Git history, forks or caches; coordinate any history cleanup separately.
 
+A scoped `minimatch` override patches the TypeScript ESLint parser's dependency while its declared range still excludes the security fix. Remove the override when the parser supports a patched version directly.
+
 ## License
 
 No license has been declared for this repository. Public availability does not grant a general reuse license; see [GitHub's licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).

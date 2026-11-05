@@ -1,103 +1,45 @@
-# Publicar el sitio
+# Deployment — nicoschioppa.com
 
-Tres pasos: subir el repositorio a GitHub, conectarlo a Vercel, y enganchar el
-dominio cuando lo tengas.
+This portfolio is already published at **https://nicoschioppa.com**. Its GitHub repository is [nschioppa/portfolio](https://github.com/nschioppa/portfolio), with **`main`** as the production branch.
 
----
+## Normal release workflow
 
-## 1. Subir a GitHub — hecho
+1. Create a feature/fix branch from `main`.
+2. Make changes locally and run:
+   ```bash
+   npm run lint
+   npm run typecheck
+   npm run build
+   ```
+3. Push the branch and open a pull request.
+4. Check the Vercel preview URL, including both languages and mobile navigation.
+5. Merge into `main` when ready. With the GitHub integration configured, Vercel deploys the new production version automatically.
 
-El repositorio ya está en
-[github.com/nschioppa/portfolio](https://github.com/nschioppa/portfolio), público y
-con todo el historial de commits. La rama es `main` y `origin` ya apunta ahí, así
-que a partir de ahora basta con:
+Avoid experimenting directly in `main` because it controls the live website.
 
-```bash
-git push
+## Domain and metadata
+
+The canonical site address defaults to `https://nicoschioppa.com` in `src/lib/site.ts`.
+
+Optional Vercel environment variable:
+
+```dotenv
+NEXT_PUBLIC_SITE_URL=https://nicoschioppa.com
 ```
 
-El otro repositorio del portfolio, el del asistente de voz, está en
-[github.com/nschioppa/voice-assistant](https://github.com/nschioppa/voice-assistant).
+If the domain changes, update the Vercel domain configuration and this variable. Do **not** commit private secrets or `.env` files. Variables prefixed `NEXT_PUBLIC_` are exposed to the browser, so never put credentials in them.
 
----
+When editing SEO metadata, verify:
+- The `/en` and `/es` pages and language links
+- Canonical URLs, sitemap and robots directives
+- Social preview images and Open Graph metadata
+- Google Search Console indexing, if connected
+- [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/) for sharing previews
 
-## 2. Conectar Vercel para que despliegue solo
+## Rollback
 
-Esto se hace **una vez y desde la web**, no por CLI: lo que querés es la
-integración de GitHub, no `vercel deploy` a mano.
+If a release causes a regression, use Vercel's deployment history to restore a previous healthy deployment, then make a corrective commit/PR. Keep Git history and production branches intact until the issue is resolved.
 
-1. Entrá a [vercel.com/new](https://vercel.com/new) y logueate **con GitHub**
-   (importante: así Vercel ya ve tus repos sin permisos extra).
-2. `Import Git Repository` → elegí `nschioppa/portfolio`.
-3. Vercel detecta Next.js solo. **No cambies nada**: ni el build command, ni el
-   output directory, ni la versión de Node. El proyecto no necesita
-   configuración extra.
-4. `Deploy`.
+## Security and privacy
 
-A partir de ahí:
-
-| Lo que hacés | Lo que pasa |
-|---|---|
-| `git push` a `main` | despliega a producción |
-| `git push` a otra rama | crea un *preview deployment* con su propia URL |
-| abrís un pull request | Vercel comenta el PR con el link del preview |
-
-No hay que volver a tocar nada. `vercel deploy` desde la terminal deja de hacer
-falta.
-
-### Variable de entorno (solo cuando tengas dominio)
-
-El sitio calcula su URL canónica solo: en preview usa `VERCEL_URL`, que Vercel
-inyecta, y en local `localhost:3000`. **Cuando conectes el dominio propio**,
-añadí en Vercel → Settings → Environment Variables:
-
-```
-NEXT_PUBLIC_SITE_URL = https://tudominio.com
-```
-
-Marcala para `Production` y volvé a desplegar. Sin eso, las etiquetas Open Graph
-y el `sitemap.xml` apuntarían a la URL `.vercel.app` en vez de a tu dominio.
-
----
-
-## 3. Enganchar el dominio propio
-
-Una vez comprado el dominio (en Namecheap, Cloudflare, Porkbun, donde sea):
-
-1. Vercel → tu proyecto → **Settings → Domains → Add**.
-2. Escribí el dominio. Añadí **las dos formas**, `tudominio.com` y
-   `www.tudominio.com`; Vercel te deja elegir cuál es la principal y redirige la
-   otra sola. Lo habitual es que la principal sea la de sin `www`.
-3. Vercel te muestra **los registros DNS exactos que hay que crear**. Son del
-   tipo:
-   - un registro `A` para el dominio raíz (`@`)
-   - un registro `CNAME` para `www`, apuntando a un host de Vercel
-
-   **Copiá los valores de la pantalla de Vercel, no de esta guía ni de un blog.**
-   Las IPs y los hosts de destino cambian cada tanto y un valor viejo te deja el
-   dominio sin resolver.
-4. Entrá al panel de tu registrador y creá esos registros en la zona DNS.
-5. Volvé a Vercel y esperá a que el dominio pase a `Valid Configuration`. Suele
-   tardar minutos, pero el DNS puede tardar hasta 48 horas en propagar del todo.
-   El certificado HTTPS lo emite Vercel solo, no hay que hacer nada.
-6. Cuando esté verde, poné `NEXT_PUBLIC_SITE_URL` (paso 2) y redesplegá.
-
-### Atajo si el dominio lo comprás en Cloudflare
-
-Si usás Cloudflare como DNS, poné los registros en modo **DNS only** (la nube
-gris, no la naranja). Con el proxy activado Vercel no puede emitir el
-certificado y el dominio se queda a medias.
-
----
-
-## Comprobación final
-
-Con el dominio ya funcionando, verificá que las meta tags salen bien pegando la
-URL en:
-
-- [opengraph.xyz](https://www.opengraph.xyz/) — cómo se ve al compartirlo
-- el [Post Inspector de LinkedIn](https://www.linkedin.com/post-inspector/) — el
-  que importa, porque es por donde te va a llegar un recruiter
-
-La imagen social se genera sola desde el copy: está en
-`src/app/[lang]/opengraph-image.tsx` y cambia si cambiás el titular.
+Before publishing, check the working tree **and Git history** for emails, personal phone numbers, passwords, API tokens, and mistakenly committed `.env` files. Adding a file to `.gitignore` does not remove a copy already committed. Rotate any credential that was ever publicly exposed.

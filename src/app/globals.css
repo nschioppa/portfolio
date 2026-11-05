@@ -4,16 +4,13 @@
   --color-base: #f7f5ef;
   --color-surface: #eeeee6;
   --color-surface-2: #e8ede8;
-  --color-surface-3: #dde7e1;
   --color-ink: #15343d;
   --color-muted: #52666a;
   --color-faint: #576b70;
   --color-accent: #24685f;
-  --color-accent-dim: #194e48;
   --color-line: #d4ddd6;
   --color-line-hi: #a8bdb4;
   --color-deep: #102c36;
-  --color-coral: #b95f45;
   --color-tone-live: #24685f;
   --color-tone-building: #95620f;
   --color-tone-exploring: #72577d;
@@ -110,7 +107,6 @@
   &:hover, &:focus-visible { background-size: 100% 1px; }
   @media (prefers-reduced-motion: reduce) { transition: none; }
 }
-@utility rule-soft { height: 1px; border: 0; background: var(--color-line); }
 .contact-section {
   --color-ink: #f6f3eb;
   --color-muted: #c4d2d3;
@@ -120,7 +116,6 @@
   --color-line-hi: #ffffff55;
   --color-base: #102c36;
   --color-surface-2: #173742;
-  --color-surface-3: #20454f;
   background: #102c36;
 }
 .sailing-photo { background: #102c36; }

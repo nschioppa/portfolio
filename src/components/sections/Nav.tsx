@@ -123,6 +123,9 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
   return (
     <header
       ref={headerRef}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) closeMenu();
+      }}
       className={cn(
         "fixed inset-x-0 top-0 z-50 border-b bg-base/95 backdrop-blur-md transition-[border-color,box-shadow] duration-300 motion-reduce:transition-none",
         scrolled || open ? "border-line shadow-[0_4px_24px_-20px_var(--color-ink)]" : "border-transparent",
@@ -145,6 +148,20 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
         </Link>
 
         <nav className="flex items-center gap-2 md:gap-5">
+          <button
+            ref={menuButtonRef}
+            type="button"
+            aria-expanded={open}
+            aria-controls={MENU_ID}
+            aria-label={open ? content.closeMenu : content.openMenu}
+            onClick={() => setOpen((value) => !value)}
+            className="order-last inline-flex size-11 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-line-hi hover:bg-surface-2 md:hidden motion-reduce:transition-none"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="size-5" focusable="false">
+              {open ? <><path d="m6 6 12 12" /><path d="M18 6 6 18" /></> : <><path d="M4 9h16" /><path d="M4 15h16" /></>}
+            </svg>
+          </button>
+
           <div
             id={MENU_ID}
             className={cn(
@@ -195,20 +212,6 @@ export function Nav({ content, lang }: { content: NavContent; lang: Lang }) {
               </Fragment>
             ))}
           </div>
-
-          <button
-            ref={menuButtonRef}
-            type="button"
-            aria-expanded={open}
-            aria-controls={MENU_ID}
-            aria-label={open ? content.closeMenu : content.openMenu}
-            onClick={() => setOpen((value) => !value)}
-            className="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-line-hi hover:bg-surface-2 md:hidden motion-reduce:transition-none"
-          >
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="size-5" focusable="false">
-              {open ? <><path d="m6 6 12 12" /><path d="M18 6 6 18" /></> : <><path d="M4 9h16" /><path d="M4 15h16" /></>}
-            </svg>
-          </button>
         </nav>
       </div>
     </header>
